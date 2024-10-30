@@ -1,0 +1,22 @@
+:root {
+    --item-bg-color: rgb(90, 90, 90);
+    --item-hov-bg-color: rgb(100, 100, 100);
+    --text-color: rgb(158, 158, 158);
+}
+
+body { background: rgb(81, 81, 81) }
+
+footer, menu, dialog, input, button { background: var(--item-bg-color) !important }
+
+p, h1, h2, h3, li, section, label { color: var(--text-color) }
+
+.left-menu li[data-selected] { background: rgba(0, 0, 0, 0.15) }
+
+.left-menu li { color: initial }
+
+input, button {
+    border-radius: 3px;
+    border: solid rgb(77, 77, 77);
+}
+
+button:hover:not(:disabled) { background: var(--item-hov-bg-color) !important }

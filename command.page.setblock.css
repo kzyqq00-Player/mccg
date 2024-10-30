@@ -1,0 +1,9 @@
+#pos input { width: 10ch }
+
+#block img {
+    width: 300px;
+    position: absolute;
+    margin-top: 4px;
+}
+
+section { margin-block: 1em }

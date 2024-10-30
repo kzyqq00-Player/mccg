@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MC指令生成器</title>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="styles.min.css">
+    <link rel="stylesheet" href="command.page.css">
+    <link rel="lincense" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="init.js" async></script>
+    <script src="ready.min.js" defer></script>
+    <script src="infos.init.js"></script>
+    <template id="contact-page">
+        <header id="path"><img src="images/back.png" alt="返回">
+            <a id="path-first-link">主页</a> > <a>联系孤独的开发者</a>
+        </header>
+
+        <main>
+            <h3>首选方案：电子邮件联系</h3>
+            <p><a href="mailto:1561737625@qq.com">点击此处</a>或右键复制电子邮件地址通过任意方式向我发送电子邮件，正文开头请加上“<span class="can-select-texts">@contact-mccg</span>”</p>
+            <h3>应急方案：QQ</h3>
+            <p>如果有非常非常急的事可以通过QQ来联系我，我的QQ号是1561737625，好友验证（好像没有？）开头请加上“<span class="can-select-texts">@contact-mccg</span>”</p>
+            <h3>备用方案：B站私信</h3>
+            <p>如果你昨天中大奖了上面两个方法都不能用，可以在<a href="https://message.bilibili.com/#/whisper/mid3493129478998630" target="_blank">B站私信联系我</a>。不过在关注或对方回复你前只能发一条消息，所以不建议使用这个方案。开头请加上“<span class="can-select-texts">@contact-mccg</span>”</p>
+            <h3>备用方案：B站评论区</h3>
+            <p>如果你今天又中了一次大奖，那么恭喜你，只能使用这个方案了。在<a href="https://space.bilibili.com/3493129478998630" target="_blank">我任意一条视频或动态</a>下面发布一条评论，开头请加上“<span class="can-select-texts">@contact-mccg</span>”</p>
+        </main>
+    </template>
+    <template id="setblock-page">
+        <header id="path"><img src="images/back.png" alt="返回">
+            <a id="path-first-link">主页</a> > <a>setblock</a>
+        </header>
+        
+        <main>
+            <label id="pos">
+                <span class="required">位置：</span>
+                <input type="text" value="~" title="x" pattern="[~1-9]">
+                <input type="text" value="~" title="y" pattern="[~1-9]">
+                <input type="text" value="~" title="z" pattern="[~1-9]">
+            </label>
+            <label id="block">
+                <section><span class="required">要放置的方块：</span><br>
+                注意：不加minecraft:前缀会自动加上，当前版本仅支持输入原版方块名</section>
+                <section><input type="text" placeholder="方块名" style="width: 14ch">
+                <button type="button" disabled id="search-in-database">在数据库里查询</button>
+                <button type="button" id="directly-input-namespace-id">直接输入ID</button>
+                <button type="button" id="block-reset" hidden>重置</button></section>
+                <dialog id="not-found-in-database">
+                    <p style="margin-bottom: 0">未在数据库中找到该方块，请手动输入ID
+                    <br>如果您确实觉得您输入的方块在原版里存在，可以尝试以下方法：</p>
+                    <ol style="margin: 6px 0">
+                        <li>把方块名描述的详细些，例如：原木(<span class="wrong"></span>) 橡木原木(<span class="right"></span>)</li>
+                        <li>不要使用其他语言的名字，例如：Air(<span class="wrong"></span>) 空气(<span class="right"></span>)</li>
+                    </ol>
+                    <button type="button" id="not-found-in-database-input-id">手动输入ID</button>
+                    <button type="button" id="not-found-in-database-cancel">取消</button>
+                </dialog>
+            </label>
+            <label id="block-state">
+                方块状态<input type="checkbox" id="block-state-switch" title="开关">：<a href="https://zh.minecraft.wiki/w/方块状态" target="_blank" title="类似于NBT，但是有Tab补全，用方框括起来，键值对中间是等号而不是冒号。
+点击前往wiki页面查看方块状态是什么，选择方块后点击“空降到选择的方块wiki页面”跳转到wiki页面后到
+数据值→方块状态段落来查看可用的键值对。">
+                <img class="help-icon" src="images/help.png" width="12px" alt></a>
+            </label>
+        </main>
+    </template>
+</head>
+
+<body>
+    <header>
+        <h2>MC指令生成器 <span>By</span> 鬼么什这搁
+            <a href="https://space.bilibili.com/3493129478998630" target="_blank" title="作者B站主页">
+                <img src="favicon.png" alt="作者头像"></a>
+        </h2>
+        <p class="can-select-texts">本工具对用户的<span>指令基础相比<a href="https://www.mcmod.cn/tools/cbcreator"
+        target="_blank">mcmod指令生成器</a>的要求较大</span>，不可作为作为<a href="https://www.mcmod.cn/tools/cbcreator"
+        target="_blank">mcmod指令生成器</a>的替代品。本工具制作初衷是给<a href="https://www.mcmod.cn/tools/cbcreator"
+        target="_blank">mcmod指令生成器</a>整个高版本移植，可是由于工作量较大，懂的都懂。
+        <select id="theme-check">
+            <option value="os-default">跟随系统</option>
+            <option value="dark">深色</option>
+            <option value="light">浅色</option>
+        </select></p>
+    </header>
+    <main>
+        <menu class="left-menu no-prefix-list">
+            <li data-selected>常规指令</li>
+        </menu>
+        <div class="select-main-command">
+            <a href="#/setblock">放置方块(setblock)</a>
+        </div>
+    </main>
+    <footer>
+        除非另有说明，否则工具内容依据
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" target="_blank">CC BY-SA 4.0</a>
+        许可证进行授权，转载请附上出处链接。<br>本工具某些图标出自网络，侵删。
+        <a href="#/contact-me" id="contact-button"><button type="button">联系孤独的开发者</button></a>
+    </footer>
+</body>
+
+</html>

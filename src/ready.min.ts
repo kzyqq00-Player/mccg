@@ -1,0 +1,32 @@
+mccg.commandPage();
+if (window.location.hash === '') {
+    ($('#theme-check').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
+    mccg.theme.value = $('#theme-check').val() as typeof mccg.theme.value;
+}
+
+$('.left-menu li').on('click', (e) => {
+    if (!e.target.dataset.selected) {
+        e.target.dataset.selected = '';
+        e.target.dataset.leftMenuSelectedTemp = 'true';
+        $('.left-menu li').each((_i, ele) => {
+            if (ele.dataset.leftMenuSelectedTemp !== 'true' && ele.dataset.selected == '')
+                delete ele.dataset.selected
+        });
+        delete e.target.dataset.leftMenuSelectedTemp;
+    }
+}); // 左侧菜单栏选项选中
+$('#theme-check').on('change', (e) =>
+    mccg.theme.value = $('#theme-check').val() as typeof mccg.theme.value
+);
+window.addEventListener('hashchange', (e) => { // 合着jq就不行是吧
+    if (new URL(e.newURL).hash != '')
+        mccg.showingCmdPage.showing = true;
+    mccg.commandPage.call(mccg);
+});
+window.addEventListener('beforeunload', () => {
+    localStorage['theme'] = mccg.theme.value; // 保存主题
+});
+/* $(window).on('beforeunload', (e) => {
+    e.preDefault();
+    return e.
+}); */

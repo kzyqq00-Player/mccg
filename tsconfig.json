@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "lib": ["ES2015", "DOM"],
+        "outDir": "./",
+        "rootDir": "./src",
+        "alwaysStrict": true,
+        "removeComments": true
+    },
+    "exclude": [
+        "**/*.d.ts",
+        "node_modules",
+    ],
+}

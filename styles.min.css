@@ -1,0 +1,107 @@
+body {
+    margin: 20px;
+    user-select: none;
+    cursor: default;
+}
+
+body:not(.command-page) header { text-align: center }
+
+header h2 { margin-bottom: 0 }
+
+header h2 img {
+    border-radius: 50%;
+    height: 20px;
+    vertical-align: sub;
+}
+
+header p { margin-top: 0 }
+
+header p span { color: red }
+
+body:not(.command-page) header h2 span { color: rgb(188, 188, 188) }
+
+.left-menu {
+    float: left;
+    background: rgb(203, 203, 203);
+    padding: 0;
+    border-radius: 10px;
+    padding-block: 20px;
+    margin: 0 30px 0 0;
+}
+
+.left-menu li {
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    padding-inline: 50px;
+    padding-block: 10px;
+    max-width: 7ch;
+}
+
+.left-menu li:hover,
+.left-menu li[data-selected] { background: rgba(0, 0, 0, 0.3) }
+
+.left-menu li:active { background: rgba(0, 0, 0, 0.4) }
+
+a {
+    color: gray;
+    cursor: pointer; /* 别问我为啥加这行 */
+    text-decoration: none;
+}
+
+footer {
+    position: fixed;
+    text-align: center;
+    border-top: 3px solid rgb(73, 73, 73);
+    background: rgb(164, 164, 164);
+    inset: auto 0 0; 
+    padding-block: 13px;
+    user-select: text;
+    cursor: auto;
+}
+
+#version {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    font-size: small;
+}
+
+button { cursor: pointer }
+
+:disabled { cursor: not-allowed }
+
+.no-prefix-list li::marker { content: none }
+
+.can-select-texts {
+    cursor: text;
+    user-select: text;
+}
+
+.image { cursor: zoom-in }
+
+dialog::backdrop { background: rgba(0, 0, 0, 0.4) }
+
+dialog {
+    user-select: none;
+    border-style: none;
+    border-radius: 10px;
+    transform: translateY(-70px);
+}
+
+.wrong::after {
+    content: '×';
+    color: red;
+}
+
+.right::after {
+    content: '√';
+    color: green;
+}
+
+#contact-button {
+    position: inherit;
+    right: 5px;
+}
+
+#theme-check { vertical-align: 1px }
