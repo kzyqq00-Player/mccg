@@ -1,5 +1,3 @@
-/// <reference types="jquery" />
-
 /* function blockStateUListElementGenerator() {
     let result = document.createElement('ul');
     result.classList.add('no-prefix-list');
