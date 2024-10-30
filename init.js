@@ -1,7 +1,4 @@
 "use strict";
-while (1) {
-    debugger;
-}
 let mccg = {
     showingCmdPage: {
         showing: false,
