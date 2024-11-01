@@ -4,6 +4,11 @@ English | [简体中文](README-zh-hans-cn.md)
 
 The Minecraft command generator yeah
 
+## How to use
+Click the "Code", then click "Download ZIP" button to download the latest version of this repository.
+
+Unzip the downloaded file and open the `index.html` file on your browser.
+
 ## Contribution
 On anyway, you need to install [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com).
 

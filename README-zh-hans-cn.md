@@ -4,6 +4,11 @@
 
 一个MC指令生成器
 
+## 如何使用
+点击“Code”，然后点击“Download ZIP”，下载这个项目。
+
+解压下载的文件，打开`index.html`文件，然后畅快的解放双脑吧！
+
 ## 贡献
 无论如何，请确保安装了[Node.js](https://nodejs.org)和[npm](http://npmjs.org)。
 
