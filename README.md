@@ -2,7 +2,7 @@
 
 English | [简体中文](README-zh-hans-cn.md)
 
-The Minecraft command generator yeah
+The Minecraft command generator yeah.
 
 ## How to use
 Click the "Code", then click "Download ZIP" button to download the latest version of this repository.
