@@ -60,13 +60,6 @@ footer {
     cursor: auto;
 }
 
-#version {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    font-size: small;
-}
-
 button { cursor: pointer }
 
 :disabled { cursor: not-allowed }
