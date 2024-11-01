@@ -26,7 +26,7 @@ npm install typescript -g
 `src/` ts及所有需要编译的源代码（不包括声明文件）<br />
 [`src/init.ts`](../src/init.ts) 初始化文件<br />
 [`src/ready.min.ts`](../src/ready.min.ts) 主页面加载完成后执行的代码<br />
-`src/ready.command.*.page.ts` 每个命令页面的加载完成后独立执行的代码<br />
+`src/ready.command.*.page.ts` 每个内置命令页面的加载完成后独立执行的代码<br />
 [`init.js`](../init.js) & [`ready.min.js`](../ready.min.js) & `ready.command.*.page.js` 编译后的文件<br />
 [`datas.init.js`](../datas.init.js) 大数据初始化文件<br />
 [`command.page.css`](../command.page.css) 命令页面通用样式<br />
