@@ -1,6 +1,3 @@
-/**
- * Shorthand of MineCraft Command Generator.
- */
 declare namespace Mccg {
     interface Extension extends EventTarget {
         /**
