@@ -5,3 +5,5 @@ package-lock.json
 package.json
 
 .develop/create.block.id.map
+
+.vscode
