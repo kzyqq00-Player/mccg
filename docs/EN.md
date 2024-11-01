@@ -1,3 +1,6 @@
+English | [简体中文](./ZH-HANS-CN.md)
+
+## Prepare
 On anyway, you need to install [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com).
 
 Click the fork button, fill in something, and then click the "Create fork" to fork this repository to your account.
