@@ -26,4 +26,4 @@ npm install jquery --save-dev
 ```bash
 npm install typescript -g
 ```
-这是最基本的准备，如果你要跟深层次的开发，请阅读[这个文档](docs/ZH-HANS-CN.md)。
+这是最基本的准备，如果你要更深层次的开发，请阅读[这个文档](docs/ZH-HANS-CN.md)。
