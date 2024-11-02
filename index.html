@@ -17,6 +17,39 @@
     <script src="datas.init.js"></script>
     <script src="init.js"></script>
     <script src="ready.min.js" defer></script>
+    <template id="main-page">
+        <header>
+            <h2>MC指令生成器 <span>By</span> 鬼么什这搁
+                <a href="https://space.bilibili.com/3493129478998630" target="_blank" title="作者B站主页">
+                    <img src="favicon.png" alt="作者头像"></a>
+            </h2>
+            <p class="can-select-texts">本工具对用户的<span>指令基础相比<a href="https://www.mcmod.cn/tools/cbcreator"
+            target="_blank">mcmod指令生成器</a>的要求较大</span>，不可作为作为<a href="https://www.mcmod.cn/tools/cbcreator"
+            target="_blank">mcmod指令生成器</a>的替代品。本工具制作初衷是给<a href="https://www.mcmod.cn/tools/cbcreator"
+            target="_blank">mcmod指令生成器</a>整个高版本移植，可是由于工作量较大，懂的都懂。
+            <select id="theme-check">
+                <option value="os-default">跟随系统</option>
+                <option value="dark">深色</option>
+                <option value="light">浅色</option>
+            </select></p>
+        </header>
+
+        <main>
+            <menu class="left-menu no-prefix-list">
+                <li data-selected>常规指令</li>
+            </menu>
+            <div class="select-main-command">
+                <a href="#/setblock">放置方块(setblock)</a>
+            </div>
+        </main>
+
+        <footer>
+            除非另有说明，否则工具内容依据
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" target="_blank">CC BY-SA 4.0</a>
+            许可证进行授权，转载请附上出处链接。<br>本工具某些图标出自网络，侵删。
+            <a href="#/contact-me" id="contact-button"><button type="button">联系孤独的开发者</button></a>
+        </footer>
+    </template>
     <template id="contact-page">
         <header id="path"><img src="images/back.png" alt="返回">
             <a id="path-first-link">主页</a> > <a>联系孤独的开发者</a>
@@ -73,36 +106,6 @@
     </template>
 </head>
 
-<body>
-    <header>
-        <h2>MC指令生成器 <span>By</span> 鬼么什这搁
-            <a href="https://space.bilibili.com/3493129478998630" target="_blank" title="作者B站主页">
-                <img src="favicon.png" alt="作者头像"></a>
-        </h2>
-        <p class="can-select-texts">本工具对用户的<span>指令基础相比<a href="https://www.mcmod.cn/tools/cbcreator"
-        target="_blank">mcmod指令生成器</a>的要求较大</span>，不可作为作为<a href="https://www.mcmod.cn/tools/cbcreator"
-        target="_blank">mcmod指令生成器</a>的替代品。本工具制作初衷是给<a href="https://www.mcmod.cn/tools/cbcreator"
-        target="_blank">mcmod指令生成器</a>整个高版本移植，可是由于工作量较大，懂的都懂。
-        <select id="theme-check">
-            <option value="os-default">跟随系统</option>
-            <option value="dark">深色</option>
-            <option value="light">浅色</option>
-        </select></p>
-    </header>
-    <main>
-        <menu class="left-menu no-prefix-list">
-            <li data-selected>常规指令</li>
-        </menu>
-        <div class="select-main-command">
-            <a href="#/setblock">放置方块(setblock)</a>
-        </div>
-    </main>
-    <footer>
-        除非另有说明，否则工具内容依据
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" target="_blank">CC BY-SA 4.0</a>
-        许可证进行授权，转载请附上出处链接。<br>本工具某些图标出自网络，侵删。
-        <a href="#/contact-me" id="contact-button"><button type="button">联系孤独的开发者</button></a>
-    </footer>
-</body>
+<body></body>
 
 </html>

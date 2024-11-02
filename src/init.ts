@@ -91,8 +91,8 @@ let mccg: {
         }
     }),
     temp: {},
-    footer: $('footer')[0],
-    homePage: document.body as HTMLBodyElement,
+    footer: void 0,
+    homePage: void 0,
     eCommandPage: document.createElement('body'),
     cancelHomePageHiddened: false,
     backToHomePage: function () {
@@ -107,13 +107,14 @@ let mccg: {
         }
     },
     commandPage: function () {
-        mccg.showingCmdPage.showing = true;
+        this.showingCmdPage.showing = true;
         switch (location.hash) {
-            case '#/setblock': this.eCommandPage.innerHTML = $('#setblock-page')[0].innerHTML; break;
-            case '#/contact-me': this.eCommandPage.innerHTML = $('#contact-page')[0].innerHTML; break;
+            case '#/setblock': this.eCommandPage.innerHTML = $('#setblock-page').html(); break;
+            case '#/contact-me': this.eCommandPage.innerHTML = $('#contact-page').html(); break;
             default: {
-                mccg.showingCmdPage.showing = false;
-                mccg.showingCmdPage.showingPage = 'home-page';
+                document.body = this.homePage;
+                this.showingCmdPage.showing = false;
+                this.showingCmdPage.showingPage = 'home-page';
                 history.replaceState(null, '', location.pathname + location.search);
                 return;
             }
@@ -151,16 +152,18 @@ let mccg: {
         this.showingCmdPage.showing = true;
     }
 };
-mccg.eCommandPage.classList.add('command-page');
-$(function () { // @ts-ignore
-    $('.image').on('click', (e: EleEve<HTMLImageElement>) => open(e.target.src, '_self'));
-});
-initInfo();
-if (mccg.theme.value == 'os-default') {
-    mccg.theme.setFromOSDefault(mccg.theme.matcher);
-    mccg.theme.bindedChangeEvent = true;
-    mccg.theme.matcher.addEventListener('change', mccg.theme.setFromOSDefault);
-}
-mccg.theme.darkStyleSheet.id = 'dark-stylesheet';
-mccg.theme.darkStyleSheet.rel = 'stylesheet';
-mccg.theme.darkStyleSheet.href = 'dark.css';
+(function(obj) {
+    obj.eCommandPage.classList.add('command-page');
+    $(function () { // @ts-ignore
+        $('.image').on('click', (e: EleEve<HTMLImageElement>) => open(e.target.src, '_self'));
+    });
+    initInfo();
+    if (obj.theme.value == 'os-default') {
+        obj.theme.setFromOSDefault(obj.theme.matcher);
+        obj.theme.bindedChangeEvent = true;
+        obj.theme.matcher.addEventListener('change', () => { obj.theme.setFromOSDefault.call(obj) });
+    }
+    obj.theme.darkStyleSheet.id = 'dark-stylesheet';
+    obj.theme.darkStyleSheet.rel = 'stylesheet';
+    obj.theme.darkStyleSheet.href = 'dark.css';
+})(mccg);

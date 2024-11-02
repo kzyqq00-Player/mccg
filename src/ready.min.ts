@@ -1,3 +1,9 @@
+(function(obj) {
+    try { var retry = () => obj.homePage.innerHTML = $('#main-page').html() } catch { retry() }
+    obj.footer = $(($('#main-page')[0] as HTMLTemplateElement).content).children('footer')[0];
+    obj.homePage = document.createElement('body');
+    obj.homePage.innerHTML = $('#main-page').html();
+})(mccg);
 mccg.commandPage();
 if (location.hash === '') {
     ($('#theme-check').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
