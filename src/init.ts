@@ -18,12 +18,12 @@ let mccg: {
             };
             blockSelectButtonClicked: boolean;
             blockIdMap: Map<string, string>;
-            inputNamespaceId: () => void;
+            inputNamespaceId: (this: typeof mccg.cmdPage.setblock) => void;
         }
     };
     theme: {
         value: sTheme,
-        setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => void;
+        setFromOSDefault: (this: typeof mccg.theme, e: MediaQueryListEvent | MediaQueryList) => void;
         darkStyleSheet: HTMLLinkElement,
         matcher: MediaQueryList,
         bindedChangeEvent: boolean,
@@ -33,8 +33,8 @@ let mccg: {
     homePage: HTMLBodyElement;
     eCommandPage: HTMLBodyElement;
     cancelHomePageHiddened: boolean;
-    backToHomePage: () => void;
-    commandPage: () => void;
+    backToHomePage: (this: typeof mccg) => void;
+    commandPage: (this: typeof mccg) => void;
 } = {
     showingCmdPage: {
         showing: false,
