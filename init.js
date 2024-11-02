@@ -100,11 +100,11 @@ let mccg = {
         stylesheet.rel = 'stylesheet';
         $(stylesheet).on('load', () => document.body.hidden = false);
         stylesheet.href = `command.page.${this.showingCmdPage.showingPage}.css`;
-        let onlyThisCommandPageScript = document.createElement('script');
+        const onlyThisCommandPageScript = document.createElement('script');
         onlyThisCommandPageScript.id = `ready-command-${this.showingCmdPage.showingPage}-page`;
         onlyThisCommandPageScript.classList.add('command-page-codes');
         onlyThisCommandPageScript.src = `ready.command.${this.showingCmdPage.showingPage}.page.js`;
-        let universalScript = document.createElement('script');
+        const universalScript = document.createElement('script');
         universalScript.id = 'ready-command-page';
         universalScript.classList.add('command-page-codes');
         universalScript.src = 'ready.command.page.js';
