@@ -8,9 +8,9 @@ let mccg = {
         setblock: {
             blockStates: [],
             blockStatesDivElementCache: document.createElement('div'),
-            selectedBlock: {},
+            selectedBlock: void 0,
             blockSelectButtonClicked: false,
-            blockIdMap: 0,
+            blockIdMap: void 0,
             inputNamespaceId: function () {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
@@ -24,8 +24,8 @@ let mccg = {
     theme: new Proxy({
         value: localStorage['theme'] || 'os-default',
         setFromOSDefault: (e) => {
-            if (e.matches)
-                $('#dark-stylesheet').length === 0 ? document.head.appendChild(mccg.theme.darkStyleSheet) : 0;
+            if (e.matches && $('#dark-stylesheet').length === 0)
+                document.head.appendChild(mccg.theme.darkStyleSheet);
             else if ($('#dark-stylesheet').length > 0) {
                 $('#dark-stylesheet').remove();
             }
