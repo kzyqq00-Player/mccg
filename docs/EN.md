@@ -29,7 +29,7 @@ Due to historical reasons, all pages are collectively referred to as command pag
 `src/ready.command.*.page.ts` Code to be executed independently after internal command page has loaded.<br />
 [`init.js`](../init.js) & [`ready.min.js`](../ready.min.js) & `ready.command.*.page.js` Compiled files.<br />
 [`datas.init.js`](../datas.init.js) Big data initialization file.<br />
-[`command.page.css`](../command.page.css) Common styles for all command pages.<br />
+[`command.page.css`](../command.page.css) Common styles for internal command pages.<br />
 `command.page.*.css` Independent styles for each command page, where `*` is the page name.<br />
 [`mccg.extension.d.ts`](../mccg.extension.d.ts) Declaration file for the future development of the plugin system.<br />
 [`dark.css`](../dark.css) Styles for dark mode.<br />
