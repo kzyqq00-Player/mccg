@@ -62,8 +62,8 @@ let mccg: {
     theme: new Proxy({
         value: localStorage['theme'] as sTheme || 'os-default',
         setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => {
-            if (e.matches)
-                $('#dark-stylesheet').length === 0 ? document.head.appendChild(mccg.theme.darkStyleSheet) : 0;
+            if (e.matches && $('#dark-stylesheet').length === 0)
+                document.head.appendChild(mccg.theme.darkStyleSheet);
             else if ($('#dark-stylesheet').length > 0) {
                 $('#dark-stylesheet').remove();
             }
