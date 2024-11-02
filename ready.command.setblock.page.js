@@ -7,13 +7,14 @@ $('#block input').on('input', (e) => {
     $('#search-in-database')[0].disabled = e.target.value === '' ? true : false;
 });
 $('#search-in-database').on('click', () => {
-    mccg.cmdPage.setblock.selectedBlock.name = $('#block input').val();
     mccg.cmdPage.setblock.blockSelectButtonClicked = true;
     $('#search-in-database')[0].innerHTML = '重新查询';
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     $('#block-reset')[0].hidden = false;
-    if (blockIdMap.has($('#block input').val()))
+    if (blockIdMap.has($('#block input').val())) {
         mccg.cmdPage.setblock.selectedBlock.id = blockIdMap.get($('#block input').val());
+        mccg.cmdPage.setblock.selectedBlock.name = $('#block input').val();
+    }
     else
         $('#not-found-in-database')[0].showModal();
 });

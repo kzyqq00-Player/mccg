@@ -8,14 +8,14 @@ $('#block input').on('input', (e: EleEve<HTMLInputElement>) => {
 });
 
 $('#search-in-database').on('click', () => {
-    mccg.cmdPage.setblock.selectedBlock.name = ($('#block input') as JQuery<HTMLInputElement>).val();
     mccg.cmdPage.setblock.blockSelectButtonClicked = true;
     $('#search-in-database')[0].innerHTML = '重新查询';
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     $('#block-reset')[0].hidden = false;
-    if (blockIdMap.has(($('#block input') as JQuery<HTMLInputElement>).val()))
+    if (blockIdMap.has(($('#block input') as JQuery<HTMLInputElement>).val())) {
         mccg.cmdPage.setblock.selectedBlock.id = blockIdMap.get(($('#block input') as JQuery<HTMLInputElement>).val());
-    else
+        mccg.cmdPage.setblock.selectedBlock.name = ($('#block input') as JQuery<HTMLInputElement>).val();
+    } else
         ($('#not-found-in-database')[0] as HTMLDialogElement).showModal();
 });
 $('#not-found-in-database-input-id').on('click', () => {
