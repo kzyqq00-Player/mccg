@@ -11,8 +11,7 @@ assignees: kzyqq00-Player
 <!-- A clear and concise description of what the bug is. -->
 
 **To Reproduce**
-Steps to reproduce the behavior:
-<!-- If it is a probabilistic bug and you cannot determine if it is related to what you have done previously, you can skip this step. But if you can't read code, this issue very probably be closed. -->
+Steps to reproduce the behavior: <!-- If it is a probabilistic bug and you cannot determine if it is related to what you have done previously, you can skip this step. But if you can't read code, this issue very probably be closed. -->
 1. 
 2. 
 3. 
