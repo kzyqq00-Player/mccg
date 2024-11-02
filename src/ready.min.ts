@@ -15,17 +15,16 @@ $('.left-menu li').on('click', (e) => {
         delete e.target.dataset.leftMenuSelectedTemp;
     }
 }); // 左侧菜单栏选项选中
-$('#theme-check').on('change', (e) =>
-    mccg.theme.value = $('#theme-check').val() as typeof mccg.theme.value
+$('#theme-check').on('change', () =>
+    mccg.theme.value = $('#theme-check').val() as sTheme
 );
 addEventListener('hashchange', (e) => { // 合着jq就不行是吧
-    if (new URL(e.newURL).hash != '')
-        mccg.showingCmdPage.showing = true;
+    new URL(e.newURL).hash != '' ? mccg.showingCmdPage.showing = true : 0;
     mccg.commandPage.call(mccg);
 });
-addEventListener('beforeunload', () => {
-    localStorage['theme'] = mccg.theme.value; // 保存主题
-});
+addEventListener('beforeunload', () =>
+    localStorage['theme'] = mccg.theme.value // 保存主题
+);
 /* $(window).on('beforeunload', (e) => {
     e.preDefault();
     return e.
