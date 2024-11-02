@@ -18,7 +18,7 @@ If you not installed TypeScript Compiler, run this command:
 npm install typescript -g
 ```
 
-## ❗ Important Notes ❗
+## ❗Important Notes❗
 Due to historical reasons, all pages are collectively referred to as command pages, and there is no distinction between command pages and regular pages.
 
 Please use the .private directory to storage your private files. Don't modify the .gitignore file if you don't have a special needs.
