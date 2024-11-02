@@ -62,9 +62,8 @@ let mccg: {
         setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => {
             if (e.matches && $('#dark-stylesheet').length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
-            else if ($('#dark-stylesheet').length > 0) {
+            else if (!e.matches && $('#dark-stylesheet').length > 0)
                 $('#dark-stylesheet').remove();
-            }
         },
         darkStyleSheet: document.createElement('link'),
         matcher: matchMedia('(prefers-color-scheme: dark)'),
