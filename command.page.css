@@ -1,7 +1,4 @@
-.command-page {
-    margin: 8px;
-    cursor: default;
-}
+.command-page { margin: revert }
 
 #path img {
     width: 20px; height: 20px;
