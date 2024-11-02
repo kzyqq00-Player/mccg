@@ -46,9 +46,9 @@ let mccg: {
         setblock: {
             blockStates: [],
             blockStatesDivElementCache: document.createElement('div'),
-            selectedBlock: void 0 as any,
+            selectedBlock: void 0,
             blockSelectButtonClicked: false,
-            blockIdMap: void 0 as any,
+            blockIdMap: void 0,
             inputNamespaceId: function () {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
