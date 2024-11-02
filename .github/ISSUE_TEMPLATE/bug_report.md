@@ -17,6 +17,9 @@ Steps to reproduce the behavior:
 2. 
 3. 
 
+**Code location**
+<!-- If you can understand the code, please roughly indicate the code location where the bug occurs. The documentation can be found in the 'docs' folder of the project's root. If you cannot understand it, that's fine, please delete this paragraph. -->
+
 **Expected behavior**
 <!-- A clear and concise description of what you expected to happen. -->
 
