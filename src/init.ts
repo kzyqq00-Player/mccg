@@ -28,7 +28,7 @@ let mccg: {
         matcher: MediaQueryList,
         bindedChangeEvent: boolean,
     };
-    temp: {};
+    temp: object;
     footer: HTMLElement;
     homePage: HTMLBodyElement;
     eCommandPage: HTMLBodyElement;
