@@ -4,6 +4,7 @@ node_modules
 package-lock.json
 package.json
 
-.develop/create.block.id.map
+# Storage your private files.
+.private
 
 .vscode
