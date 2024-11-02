@@ -5,21 +5,22 @@ if (location.hash === '') {
 }
 
 $('.left-menu li').on('click', (e) => {
-    if (!e.target.dataset.selected) {
-        e.target.dataset.selected = '';
-        e.target.dataset.leftMenuSelectedTemp = 'true';
+    let dataset = e.target.dataset;
+    if (!dataset.selected) {
+        dataset.selected = '';
+        dataset.leftMenuSelectedTemp = 'true';
         $('.left-menu li').each((_i, ele) => {
             if (ele.dataset.leftMenuSelectedTemp !== 'true' && ele.dataset.selected == '')
                 delete ele.dataset.selected
         });
-        delete e.target.dataset.leftMenuSelectedTemp;
+        delete dataset.leftMenuSelectedTemp;
     }
 }); // 左侧菜单栏选项选中
 $('#theme-check').on('change', () =>
     mccg.theme.value = $('#theme-check').val() as sTheme
 );
 addEventListener('hashchange', (e) => { // 合着jq就不行是吧
-    new URL(e.newURL).hash != '' ? mccg.showingCmdPage.showing = true : 0;
+    new URL(e.newURL).hash !== '' ? mccg.showingCmdPage.showing = true : 0;
     mccg.commandPage.call(mccg);
 });
 addEventListener('beforeunload', () =>
