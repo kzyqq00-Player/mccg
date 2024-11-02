@@ -1,7 +1,5 @@
 type sTheme = 'os-default' | 'dark' | 'light';
-interface EleEve<T extends EventTarget> extends Event {
-    target: T;
-}
+interface EleEve<T extends EventTarget> extends Event { target: T }
 
 declare function initInfo(): void;
 
