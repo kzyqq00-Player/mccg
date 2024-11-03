@@ -7,7 +7,7 @@
 mccg.commandPage();
 if (location.hash === '') {
     ($('#theme-check').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
-    mccg.theme.value = $('#theme-check').val() as typeof mccg.theme.value;
+    mccg.theme.value = $('#theme-check').val() as sTheme;
 }
 
 $('.left-menu li').on('click', (e) => {
