@@ -2,8 +2,12 @@
     obj.footer = $(($('#main-page')[0] as HTMLTemplateElement).content).children('footer')[0];
     obj.homePage = document.createElement('body');
     obj.homePage.innerHTML = $('#main-page').html();
+
+    document.body = obj.homePage;
+    obj.showingCmdPage.showing = false;
+    obj.showingCmdPage.showingPage = 'home-page';
+    history.replaceState(null, '', location.pathname + location.search);
 })(mccg);
-mccg.commandPage();
 if (location.hash === '') {
     ($('#theme-check').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
     mccg.theme.value = $('#theme-check').val() as sTheme;

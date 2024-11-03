@@ -110,13 +110,7 @@ let mccg: {
         switch (location.hash) {
             case '#/setblock': this.eCommandPage.innerHTML = $('#setblock-page').html(); break;
             case '#/contact-me': this.eCommandPage.innerHTML = $('#contact-page').html(); break;
-            default: {
-                document.body = this.homePage;
-                this.showingCmdPage.showing = false;
-                this.showingCmdPage.showingPage = 'home-page';
-                history.replaceState(null, '', location.pathname + location.search);
-                return;
-            }
+            default: return;
         }
 
         if (document.body.lastChild.nodeName !== 'FOOTER')
