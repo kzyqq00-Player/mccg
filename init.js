@@ -65,7 +65,7 @@ let mccg = {
     cancelHomePageHiddened: false,
     backToHomePage: function () {
         if (this.showingCmdPage.showing == true) {
-            if ($(this.homePage).last()[0].nodeName != 'FOOTER')
+            if (document.body.lastChild.nodeName !== 'FOOTER')
                 this.homePage.appendChild(this.footer);
             document.body = this.homePage;
             location.hash = '';
@@ -90,7 +90,7 @@ let mccg = {
                 return;
             }
         }
-        if ($(this.eCommandPage).last()[0].nodeName != 'FOOTER')
+        if (document.body.lastChild.nodeName !== 'FOOTER')
             this.eCommandPage.appendChild(this.footer);
         this.showingCmdPage.showingPage = location.hash.slice(2);
         let stylesheet = document.createElement('link');
