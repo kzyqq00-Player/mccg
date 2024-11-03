@@ -26,7 +26,7 @@ $('#theme-check').on('change', () =>
     mccg.theme.value = $('#theme-check').val() as sTheme
 );
 addEventListener('hashchange', (e) => { // 合着jq就不行是吧
-    new URL(e.newURL).hash !== '' ? mccg.showingCmdPage.showing = true : 0;
+    new URL(e.newURL).hash !== '' && (mccg.showingCmdPage.showing = true);
     mccg.commandPage.call(mccg);
 });
 addEventListener('beforeunload', () =>
