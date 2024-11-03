@@ -124,7 +124,7 @@ let mccg = {
     if (obj.theme.value == 'os-default') {
         obj.theme.setFromOSDefault(obj.theme.matcher);
         obj.theme.bindedChangeEvent = true;
-        obj.theme.matcher.addEventListener('change', () => { obj.theme.setFromOSDefault.call(obj); });
+        obj.theme.matcher.addEventListener('change', obj.theme.setFromOSDefault);
     }
     obj.theme.darkStyleSheet.id = 'dark-stylesheet';
     obj.theme.darkStyleSheet.rel = 'stylesheet';
