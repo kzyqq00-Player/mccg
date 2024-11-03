@@ -1,5 +1,4 @@
 (function(obj) {
-    try { var retry = () => obj.homePage.innerHTML = $('#main-page').html() } catch { retry() }
     obj.footer = $(($('#main-page')[0] as HTMLTemplateElement).content).children('footer')[0];
     obj.homePage = document.createElement('body');
     obj.homePage.innerHTML = $('#main-page').html();
