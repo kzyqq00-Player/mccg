@@ -1,7 +1,7 @@
 ---
 name: Bug反馈（中文）
 about: 整个issue噻
-title: "[C BUG] "
+title: "[C.BUG] "
 labels: bug
 assignees: kzyqq00-Player
 
