@@ -75,7 +75,6 @@ let mccg = {
         }
     },
     commandPage: function () {
-        this.showingCmdPage.showing = true;
         switch (location.hash) {
             case '#/setblock':
                 this.eCommandPage.innerHTML = $('#setblock-page').html();
