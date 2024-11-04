@@ -19,7 +19,7 @@ $('.left-menu li').on('click', (e) => {
         dataset.selected = '';
         dataset.leftMenuSelectedTemp = 'true';
         $('.left-menu li').each((_i, ele) => {
-            if (ele.dataset.leftMenuSelectedTemp !== 'true' && ele.dataset.selected == '')
+            if (ele.dataset.leftMenuSelectedTemp !== 'true' && ele.dataset.selected === '')
                 delete ele.dataset.selected
         });
         delete dataset.leftMenuSelectedTemp;
