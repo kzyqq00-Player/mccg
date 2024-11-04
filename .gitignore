@@ -1,6 +1,7 @@
 # Oh that's s**t
 node_modules
 
+# Please don't change this paragraph.
 package-lock.json
 package.json
 
