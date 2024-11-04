@@ -3,7 +3,7 @@ interface EleEve<T extends EventTarget> extends Event { target: T }
 
 declare function initInfo(): void;
 
-let mccg: {
+const mccg: {
     showingCmdPage: {
         showing: boolean;
         showingPage: string;

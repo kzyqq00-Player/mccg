@@ -1,5 +1,5 @@
 "use strict";
-let mccg = {
+const mccg = {
     showingCmdPage: {
         showing: false,
         showingPage: 'home-page'
