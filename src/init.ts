@@ -1,5 +1,5 @@
 type sTheme = 'os-default' | 'dark' | 'light';
-interface EleEve<T extends EventTarget> extends Event { target: T }
+interface EventTargetType<T extends EventTarget> extends Event { target: T }
 
 declare function initInfo(): void;
 
@@ -137,7 +137,7 @@ const mccg: {
         universalScript.src = 'ready.command.page.js';
 
         document.body = this.eCommandPage; // @ts-ignore
-        $('.image').on('click', (e: EleEve<HTMLImageElement>) => open(e.target.src, '_self'));
+        $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
         document.head.appendChild(stylesheet);
         document.head.appendChild(universalScript);
         document.head.appendChild(onlyThisCommandPageScript);
@@ -148,7 +148,7 @@ const mccg: {
 (function(obj) {
     obj.eCommandPage.classList.add('command-page');
     $(function () { // @ts-ignore
-        $('.image').on('click', (e: EleEve<HTMLImageElement>) => open(e.target.src, '_self'));
+        $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
     });
     initInfo();
     if (obj.theme.value == 'os-default') {

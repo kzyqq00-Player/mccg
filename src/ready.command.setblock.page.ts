@@ -1,5 +1,5 @@
 // @ts-ignore
-$('#block input').on('input', (e: EleEve<HTMLInputElement>) => {
+$('#block input').on('input', (e: EventTargetType<HTMLInputElement>) => {
     if (mccg.cmdPage.setblock.blockSelectButtonClicked == true) 
         return;
     if (e.target.value === '')
@@ -39,20 +39,21 @@ $('#block-reset').on('click', (e) => {
     mccg.cmdPage.setblock.blockSelectButtonClicked = false;
     e.target.hidden = true;
 });
-/* $('#block-state-switch').on('change', (e) => {
+// @ts-ignore
+$('#block-state-switch').on('change', (e: EventTargetType<HTMLInputElement>) => {
     if (e.target.checked == true) {
-        let result = mcCmdGenerator.cmdPage.setblock.blockStatesDivElementCache;
-        for (let index = 0; index < mcCmdGenerator.cmdPage.setblock.blockStates.length; index++) {
-            const element = mcCmdGenerator.cmdPage.setblock.blockStates[index];
+        let result = mccg.cmdPage.setblock.blockStatesDivElementCache;
+        for (let index = 0; index < mccg.cmdPage.setblock.blockStates.length; index++) {
+            const element = mccg.cmdPage.setblock.blockStates[index];
             
         }
-        if (mcCmdGenerator.cmdPage.setblock.blockStates.length == 0) {
+        if (mccg.cmdPage.setblock.blockStates.length == 0) {
             result.innerHTML =
             `键：<input type="text" class="block-states-keys block-states-inputs">
             值：<input type="text" class="block-states-values block-states-inputs">`;
         }
-        for (let key of mcCmdGenerator.cmdPage.setblock.blockStates) {
+        for (let key of mccg.cmdPage.setblock.blockStates) {
             
         }
     }
-}); */
+});
