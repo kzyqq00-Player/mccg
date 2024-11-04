@@ -9,14 +9,15 @@
 ```bash
 git clone https://github.com/your-username/mccg.git
 ```
-为了开发方便，你应该在你克隆的文件夹里安装jquery类型提示：
+在你的仓库目录下运行：
 ```bash
-npm install jquery --save-dev
+npm install
 ```
-如果你没有安装TypeScript编译器，你需要安装它：
+如果你嫌安装太慢，可以尝试使用淘宝的npm镜像：
 ```bash
-npm install typescript -g
+npm config set registry https://registry.npmmirror.com
 ```
+然后你再运行`npm install`。
 
 ## ❗注意事项❗
 因为历史原因，所有页面统称为命令页面，不分为命令页面和普通页面。

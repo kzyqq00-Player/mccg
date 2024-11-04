@@ -1,5 +1,11 @@
 English | [简体中文](./ZH-HANS-CN.md)
 
+**Chineses**
+
+如果你看得懂这句话请转到简体中文，因为英文文档有一些东西不适合中国开发者（比如npm镜像）。
+
+**Chineses**
+
 ## Prepare
 On anyway, you need to install [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com).
 
@@ -11,11 +17,7 @@ git clone https://github.com/your-username/mccg.git
 ```
 On your cloned repository's directory, run this command:
 ```bash
-npm install @types/jquery --save-dev
-```
-If you not installed TypeScript Compiler, run this command:
-```bash
-npm install typescript -g
+npm install
 ```
 
 ## ❗Important Notes❗
