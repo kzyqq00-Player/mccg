@@ -1,5 +1,7 @@
 [English](./EN.md) | 简体中文
 
+抱歉，文档和注释还没有完善。
+
 ## 基本准备
 无论如何，请确保安装了[Node.js](https://nodejs.org)和[npm](http://npmjs.org)。
 

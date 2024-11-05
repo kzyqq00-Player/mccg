@@ -1,5 +1,7 @@
 English | [简体中文](./ZH-HANS-CN.md)
 
+Sorry, the documentation and comments are not yet complete.
+
 **Chineses**
 
 如果你看得懂这句话请转到简体中文，因为英文文档有一些东西不适合中国开发者（比如npm镜像）。
