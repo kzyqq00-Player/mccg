@@ -7,7 +7,6 @@ const mccg = {
     cmdPage: {
         setblock: {
             blockStates: [],
-            blockStatesDivElementCache: document.createElement('div'),
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
             blockIdMap: void 0,

@@ -39,3 +39,6 @@ $('#block-reset').on('click', (e) => {
     mccg.cmdPage.setblock.blockSelectButtonClicked = false;
     e.target.hidden = true;
 });
+$('#block-state-switch').on('change', (e) => {
+    $('.block-state-input').each((i) => { $('.block-state-input')[i].hidden = !e.target.checked; });
+});

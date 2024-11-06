@@ -11,7 +11,6 @@ const mccg: {
     cmdPage: {
         setblock: {
             blockStates: [string, string | number][];
-            blockStatesDivElementCache: HTMLDivElement;
             selectedBlock: {
                 name: string;
                 id: string;
@@ -43,7 +42,6 @@ const mccg: {
     cmdPage: {
         setblock: {
             blockStates: [],
-            blockStatesDivElementCache: document.createElement('div'),
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
             blockIdMap: void 0,
@@ -147,10 +145,12 @@ const mccg: {
 };
 (function(obj) {
     obj.eCommandPage.classList.add('command-page');
+
     $(function () { // @ts-ignore
         $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
     });
     initInfo();
+
     if (obj.theme.value == 'os-default') {
         obj.theme.setFromOSDefault(obj.theme.matcher);
         obj.theme.bindedChangeEvent = true;

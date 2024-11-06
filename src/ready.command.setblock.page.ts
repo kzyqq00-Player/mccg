@@ -41,19 +41,5 @@ $('#block-reset').on('click', (e) => {
 });
 // @ts-ignore
 $('#block-state-switch').on('change', (e: EventTargetType<HTMLInputElement>) => {
-    if (e.target.checked == true) {
-        let result = mccg.cmdPage.setblock.blockStatesDivElementCache;
-        for (let index = 0; index < mccg.cmdPage.setblock.blockStates.length; index++) {
-            const element = mccg.cmdPage.setblock.blockStates[index];
-            
-        }
-        if (mccg.cmdPage.setblock.blockStates.length == 0) {
-            result.innerHTML =
-            `键：<input type="text" class="block-states-keys block-states-inputs">
-            值：<input type="text" class="block-states-values block-states-inputs">`;
-        }
-        for (let key of mccg.cmdPage.setblock.blockStates) {
-            
-        }
-    }
+    $('.block-state-input').each((i) => { $('.block-state-input')[i].hidden = !e.target.checked });
 });

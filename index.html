@@ -97,10 +97,27 @@
                 </dialog>
             </label>
             <label id="block-state">
-                方块状态<input type="checkbox" id="block-state-switch" title="开关">：<a href="https://zh.minecraft.wiki/w/方块状态" target="_blank" title="类似于NBT，但是有Tab补全，用方框括起来，键值对中间是等号而不是冒号。
+                方块状态
+                <input type="checkbox" id="block-state-switch" title="开关" checked>：<a href="https://zh.minecraft.wiki/w/方块状态" target="_blank"
+                    title="类似于NBT，但是有Tab补全，用方框括起来，键值对中间是等号而不是冒号。
 点击前往wiki页面查看方块状态是什么，选择方块后点击“空降到选择的方块wiki页面”跳转到wiki页面后到
 数据值→方块状态段落来查看可用的键值对。">
-                <img class="help-icon" src="images/help.png" width="12px" alt></a>
+                    <img class="help-icon" src="images/help.png" width="12px" alt></a>
+                <button id="block-state-add" class="block-state-input">添加一项</button>
+                <table id="block-state-table" class="block-state-input">
+                    <thead>
+                        <tr>
+                            <td>键</td>
+                            <td>值</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" placeholder="键" title="键"></td>
+                            <td><input type="text" placeholder="值" title="值"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </label>
         </main>
     </template>
