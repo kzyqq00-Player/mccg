@@ -28,7 +28,7 @@ const mccg: {
         matcher: MediaQueryList,
         bindedChangeEvent: boolean,
     };
-    temp: object;
+    temp: object | null;
     footer: HTMLElement;
     homePage: HTMLBodyElement;
     eCommandPage: HTMLBodyElement;
@@ -90,7 +90,7 @@ const mccg: {
             return Reflect.set(...arguments);
         }
     }),
-    temp: {},
+    temp: null,
     footer: void 0,
     homePage: void 0,
     eCommandPage: document.createElement('body'),

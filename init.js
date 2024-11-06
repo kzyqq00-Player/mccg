@@ -58,7 +58,7 @@ const mccg = {
             return Reflect.set(...arguments);
         }
     }),
-    temp: {},
+    temp: null,
     footer: void 0,
     homePage: void 0,
     eCommandPage: document.createElement('body'),
