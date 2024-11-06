@@ -9,12 +9,12 @@
     history.replaceState(null, '', location.pathname + location.search);
 })(mccg);
 if (location.hash === '') {
-    ($('#theme-check').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
-    mccg.theme.value = $('#theme-check').val() as sTheme;
+    ($('#theme-select').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
+    mccg.theme.value = $('#theme-select').val() as sTheme;
 }
 
 $('.left-menu li').on('click', (e) => {
-    let dataset = e.target.dataset;
+    const dataset = e.target.dataset;
     if (!dataset.selected) {
         dataset.selected = '';
         dataset.leftMenuSelectedTemp = 'true';
@@ -25,8 +25,8 @@ $('.left-menu li').on('click', (e) => {
         delete dataset.leftMenuSelectedTemp;
     }
 }); // 左侧菜单栏选项选中
-$('#theme-check').on('change', () =>
-    mccg.theme.value = $('#theme-check').val() as sTheme
+$('#theme-select').on('change', () =>
+    mccg.theme.value = $('#theme-select').val() as sTheme
 );
 window.addEventListener('hashchange', (e) => {
     new URL(e.newURL).hash !== '' && (mccg.showingCmdPage.showing = true);
