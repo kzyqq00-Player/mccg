@@ -6,4 +6,11 @@
     margin-top: 4px;
 }
 
-section { margin-block: 1em }
+#block-state-add {
+    position: relative;
+    left: 60px;
+}
+
+#block-state-table { margin-top: 10px }
+
+#block-state-table tbody input { width: 14ch }

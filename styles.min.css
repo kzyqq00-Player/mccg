@@ -96,3 +96,12 @@ dialog {
     position: inherit;
     right: 5px;
 }
+
+table { border-collapse: collapse }
+
+table, th, td {
+    padding: 3px;
+    border: 1px solid black;
+}
+
+table thead { font-weight: bold }

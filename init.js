@@ -6,7 +6,16 @@ const mccg = {
     },
     cmdPage: {
         setblock: {
-            blockStates: [],
+            blockStates: [['', '']],
+            TRElement: document.createElement('tr'),
+            onBlockStateInput: (e) => {
+                const cell = e.target.closest('td');
+                const row = cell.closest('tr');
+                const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+                if (!mccg.cmdPage.setblock.blockStates[rowIndex])
+                    mccg.cmdPage.setblock.blockStates[rowIndex] = [];
+                mccg.cmdPage.setblock.blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
+            },
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
             blockIdMap: void 0,
@@ -122,4 +131,6 @@ const mccg = {
     obj.theme.darkStyleSheet.id = 'dark-stylesheet';
     obj.theme.darkStyleSheet.rel = 'stylesheet';
     obj.theme.darkStyleSheet.href = 'dark.css';
+    obj.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
+    $(obj.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput); });
 })(mccg);

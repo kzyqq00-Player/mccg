@@ -42,3 +42,8 @@ $('#block-reset').on('click', (e) => {
 $('#block-state-switch').on('change', (e) => {
     $('.block-state-input').each((i) => { $('.block-state-input')[i].hidden = !e.target.checked; });
 });
+$('#block-state-table tbody input').on('input', mccg.cmdPage.setblock.onBlockStateInput);
+$('#block-state-add').on('click', () => {
+    $('#block-state-table tbody')[0].appendChild(mccg.cmdPage.setblock.TRElement);
+    mccg.cmdPage.setblock.TRElement = mccg.cmdPage.setblock.TRElement.cloneNode(true);
+});
