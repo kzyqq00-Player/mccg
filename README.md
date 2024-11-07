@@ -15,10 +15,6 @@ git clone https://github.com/your-username/mccg.git
 ```
 On your cloned repository's directory, run this command:
 ```bash
-npm install @types/jquery --save-dev
-```
-If you not installed TypeScript Compiler, run this command:
-```bash
-npm install typescript -g
+npm install
 ```
 For learn more, [click this](docs/EN.md).
