@@ -161,7 +161,7 @@ declare namespace Mccg {
     // var n: ExtensionStatic;
     type ExtensionInternalProps = "registed";
     type InitExtension = Omit<Extension, keyof EventTarget | ExtensionInternalProps>;
-    type InternalPages = "home-page" | "contact-me" | "setblock" & string;
+    type InternalPages = "home-page" | "contact-me" | "setblock";
     
     /* declare var Extension: {
         prototype: Extension;
