@@ -31,7 +31,7 @@ declare namespace Mccg {
          * 
          * If you want storage something in localstorage, use `localStorage` property.
          */
-        storage?: object;
+        storage: object | null;
         /**
          * The extension system assigned localstorage space.
          * 
@@ -69,7 +69,7 @@ declare namespace Mccg {
          * 
          * If you really want to call this method, <span style="color:#ffBB00;">then code review will waring you :)</span>
          */
-        dispatchEvent(event: Event):boolean;
+        dispatchEvent(event: Event): boolean;
     }
 
     /**
