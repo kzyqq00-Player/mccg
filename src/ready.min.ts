@@ -6,6 +6,8 @@
     document.body = obj.homePage;
     obj.showingCmdPage.showing = false;
     obj.showingCmdPage.showingPage = 'home-page';
+
+    obj.commandPage();
 })(mccg);
 if (location.hash === '') {
     ($('#theme-select').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
