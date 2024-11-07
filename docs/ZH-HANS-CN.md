@@ -14,6 +14,7 @@ git clone https://github.com/your-username/mccg.git
 在你的仓库目录下运行：
 ```bash
 npm install
+tsc
 ```
 如果你嫌安装太慢，可以尝试使用淘宝的npm镜像：
 ```bash
@@ -32,12 +33,9 @@ npm config set registry https://registry.npmmirror.com
 [`src/init.ts`](../src/init.ts) 初始化文件<br />
 [`src/ready.min.ts`](../src/ready.min.ts) 主页面加载完成后执行的代码<br />
 `src/ready.command.*.page.ts` 每个内置命令页面的加载完成后独立执行的代码<br />
-[`init.js`](../init.js) & [`ready.min.js`](../ready.min.js) & `ready.command.*.page.js` 编译后的文件<br />
-[`datas.init.js`](../datas.init.js) 大数据初始化文件<br />
 [`command.page.css`](../command.page.css) 命令页面通用样式<br />
 `command.page.*.css` 每个内置命令页面的独立样式，其中`*`是页面名<br />
 [`mccg.extension.d.ts`](../mccg.extension.d.ts) 未来将会开发的插件系统的声明文件<br />
 [`dark.css`](../dark.css) 深色模式样式<br />
 [`index.html`](../index.html) 主页面<br />
-[`jquery-3.7.1.min.js`](../jquery-3.7.1.min.js) jQuery库<br />年
 [`tsconfig.json`](../tsconfig.json) TypeScript配置文件<br />

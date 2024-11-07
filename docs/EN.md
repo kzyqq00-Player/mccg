@@ -20,6 +20,7 @@ git clone https://github.com/your-username/mccg.git
 On your cloned repository's directory, run this command:
 ```bash
 npm install
+tsc
 ```
 
 ## ❗Important Notes❗
@@ -33,12 +34,9 @@ Please use the .private directory to storage your private files. Don't modify th
 [`src/init.ts`](../src/init.ts) Initialization file<br />
 [`src/ready.min.ts`](../src/ready.min.ts) Code to be executed after the main page has loaded.<br />
 `src/ready.command.*.page.ts` Code to be executed independently after internal command page has loaded.<br />
-[`init.js`](../init.js) & [`ready.min.js`](../ready.min.js) & `ready.command.*.page.js` Compiled files.<br />
-[`datas.init.js`](../datas.init.js) Big data initialization file.<br />
 [`command.page.css`](../command.page.css) Common styles for internal command pages.<br />
 `command.page.*.css` Independent styles for each command page, where `*` is the page name.<br />
 [`mccg.extension.d.ts`](../mccg.extension.d.ts) Declaration file for the future development of the plugin system.<br />
 [`dark.css`](../dark.css) Styles for dark mode.<br />
 [`index.html`](../index.html) Main page.<br />
-[`jquery-3.7.1.min.js`](../jquery-3.7.1.min.js) jQuery library.<br />
 [`tsconfig.json`](../tsconfig.json) TypeScript configuration file.<br />
