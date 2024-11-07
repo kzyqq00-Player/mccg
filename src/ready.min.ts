@@ -6,7 +6,6 @@
     document.body = obj.homePage;
     obj.showingCmdPage.showing = false;
     obj.showingCmdPage.showingPage = 'home-page';
-    history.replaceState(null, '', location.pathname + location.search);
 })(mccg);
 if (location.hash === '') {
     ($('#theme-select').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;

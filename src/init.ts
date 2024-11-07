@@ -109,7 +109,7 @@ const mccg: {
             if (document.body.lastChild.nodeName !== 'FOOTER')
                 this.homePage.appendChild(this.footer);
             document.body = this.homePage;
-            location.hash = '';
+            history.replaceState(null, '', location.pathname + location.search);
             $('.command-page-codes').remove();
             this.showingCmdPage.showing = false;
             this.showingCmdPage.showingPage = 'home-page';
