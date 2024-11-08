@@ -149,7 +149,7 @@ declare namespace Mccg {
          */
         pageAdd<CA extends any[]>(pageName: string, pageBody: ArgHandler<HTMLBodyElement>, pageLoadedCallback: () => any, /** @param args Expanded from of the `lArgs` parameter in the `pageOperation` function. */ pageCloseCallback: (...args: CA) => any, cArgs?: CA): void;
         /**
-         * @param lArgs Oops, JavaScript forbids the rest parameter not at the end of the parameters, so this is an array and not a rest parameter. Therefore, this array will be expanded and passed to `pageLoadedCallback`.
+         * @param lArgs Oops, JavaScript forbids the rest parameter not at the end of the parameters, so we back in the mine, got our pickaxe swinging from for s2s, ss2s, and this is an array and not a rest parameter. Therefore, this array will be expanded and passed to `pageLoadedCallback`.
          */
         pageAdd<LA extends any[], CA extends any[]>(pageName: string, pageBody: ArgHandler<HTMLBodyElement>, /** @param args Expanded from of the `lArgs` parameter in the `pageOperation` function. */ pageLoadedCallback: (...args: LA) => any, lArgs: LA, /** @param args `pageAdd` function's `cArgs` parameter. */ pageCloseCallback: (...args: CA) => any, ...cArgs: CA): void;
         /**
