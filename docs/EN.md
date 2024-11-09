@@ -2,11 +2,7 @@ English | [简体中文](./ZH-HANS-CN.md)
 
 Sorry, the documentation and comments are not yet complete.
 
-**Chineses**
-
-如果你看得懂这句话请转到简体中文，因为英文文档有一些东西不适合中国开发者（比如npm镜像）。
-
-**Chineses**
+**Chineses** 如果你看得懂这句话请转到简体中文，因为英文文档有一些东西不适合中国开发者（比如npm镜像）。**Chineses**
 
 ## Prepare
 On anyway, you need to install [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com).
@@ -34,6 +30,7 @@ Please use the .private directory to storage your private files. Don't modify th
 [`src/init.ts`](../src/init.ts) Initialization file<br />
 [`src/ready.min.ts`](../src/ready.min.ts) Code to be executed after the main page has loaded.<br />
 `src/ready.command.*.page.ts` Code to be executed independently after internal command page has loaded.<br />
+[`ready.command.page.js`](../ready.command.page.js) Code to be executed communal after internal command page has loaded.<br />
 [`command.page.css`](../command.page.css) Common styles for internal command pages.<br />
 `command.page.*.css` Independent styles for each command page, where `*` is the page name.<br />
 [`mccg.extension.d.ts`](../mccg.extension.d.ts) Declaration file for the future development of the plugin system.<br />
