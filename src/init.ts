@@ -7,6 +7,7 @@ const mccg: {
     showingCmdPage: {
         showing: boolean;
         showingPage: string;
+        showedPages: string[];
     };
     cmdPage: {
         setblock: {
@@ -19,7 +20,7 @@ const mccg: {
             };
             blockSelectButtonClicked: boolean;
             blockIdMap: Map<string, string>;
-            inputNamespaceId: (this: typeof mccg.cmdPage.setblock) => void;
+            inputNamespaceId: () => void;
         }
     };
     theme: {
@@ -39,7 +40,8 @@ const mccg: {
 } = {
     showingCmdPage: {
         showing: false,
-        showingPage: 'home-page'
+        showingPage: 'home-page',
+        showedPages: []
     },
     cmdPage: {
         setblock: {
@@ -109,49 +111,66 @@ const mccg: {
             if (document.body.lastChild.nodeName !== 'FOOTER')
                 this.homePage.appendChild(this.footer);
             document.body = this.homePage;
+            $('.command-page-scripts').remove();
             history.replaceState(null, '', location.pathname + location.search);
-            $('.command-page-codes').remove();
             this.showingCmdPage.showing = false;
             this.showingCmdPage.showingPage = 'home-page';
         }
     },
     commandPage: function () {
+        let templateIdOfWillBeShowedPage: string;
+        const setBody = function(this: typeof mccg, appendStyles: boolean) {
+            console.trace();
+            this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
+            document.body = this.eCommandPage;
+            
+            if (document.body.lastChild.nodeName !== 'FOOTER')
+                this.eCommandPage.appendChild(this.footer);
+            this.showingCmdPage.showingPage = location.hash.slice(2);
+
+            if (appendStyles == true) {
+                const stylesheet = document.createElement('link');
+                stylesheet.id = `command-page-${this.showingCmdPage.showingPage}-stylesheet`;
+                stylesheet.rel = 'stylesheet';
+                $(stylesheet).on('load', () =>
+                    document.body.hidden = false
+                );
+                stylesheet.href = `command.page.${this.showingCmdPage.showingPage}.css`;
+                // @ts-ignore
+                $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
+                document.head.appendChild(stylesheet);
+            }
+
+            if (this.showingCmdPage.showingPage !== 'home-page') {
+                const onlyThisCommandPageScript = document.createElement('script');
+                onlyThisCommandPageScript.id = `ready-command-${this.showingCmdPage.showingPage}-page`;
+                onlyThisCommandPageScript.classList.add('command-page-scripts');
+                onlyThisCommandPageScript.src = `ready.command.${this.showingCmdPage.showingPage}.page.js`;
+
+                const universalScript = document.createElement('script');
+                universalScript.id = 'ready-command-page';
+                universalScript.classList.add('command-page-scripts');
+                universalScript.src = 'ready.command.page.js';
+
+                document.head.appendChild(universalScript);
+                document.head.appendChild(onlyThisCommandPageScript);
+            }
+            
+            this.showingCmdPage.showing = true;
+        }
         switch (location.hash) {
-            case '#/setblock': this.eCommandPage.innerHTML = $('#setblock-page').html(); break;
-            case '#/contact-me': this.eCommandPage.innerHTML = $('#contact-page').html(); break;
-            default: return;
+            case '#/setblock': templateIdOfWillBeShowedPage = 'setblock-page'; break;
+            case '#/contact-me': templateIdOfWillBeShowedPage = 'contact-page'; break;
+            default: this.backToHomePage(); return;
+        }
+        if (!this.showingCmdPage.showedPages.includes(templateIdOfWillBeShowedPage))
+            this.showingCmdPage.showedPages.push(templateIdOfWillBeShowedPage);
+        else {
+            setBody.call(this, false);
+            return;
         }
 
-        if (document.body.lastChild.nodeName !== 'FOOTER')
-            this.eCommandPage.appendChild(this.footer);
-        this.showingCmdPage.showingPage = location.hash.slice(2);
-
-        let stylesheet = document.createElement('link');
-        stylesheet.id = `command-page-${this.showingCmdPage.showingPage}-stylesheet`;
-        stylesheet.classList.add('command-page-codes');
-        stylesheet.rel = 'stylesheet';
-        $(stylesheet).on('load', () =>
-            document.body.hidden = false
-        );
-        stylesheet.href = `command.page.${this.showingCmdPage.showingPage}.css`;
-
-        const onlyThisCommandPageScript = document.createElement('script');
-        onlyThisCommandPageScript.id = `ready-command-${this.showingCmdPage.showingPage}-page`;
-        onlyThisCommandPageScript.classList.add('command-page-codes');
-        onlyThisCommandPageScript.src = `ready.command.${this.showingCmdPage.showingPage}.page.js`;
-
-        const universalScript = document.createElement('script');
-        universalScript.id = 'ready-command-page';
-        universalScript.classList.add('command-page-codes');
-        universalScript.src = 'ready.command.page.js';
-
-        document.body = this.eCommandPage; // @ts-ignore
-        $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
-        document.head.appendChild(stylesheet);
-        document.head.appendChild(universalScript);
-        document.head.appendChild(onlyThisCommandPageScript);
-
-        this.showingCmdPage.showing = true;
+        setBody.call(this, true);
     }
 };
 (function(obj) {

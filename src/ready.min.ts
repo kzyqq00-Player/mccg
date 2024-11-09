@@ -29,10 +29,7 @@ $('.left-menu li').on('click', (e) => {
 $('#theme-select').on('change', () =>
     mccg.theme.value = $('#theme-select').val() as sTheme
 );
-window.addEventListener('hashchange', (e) => {
-    new URL(e.newURL).hash !== '' && (mccg.showingCmdPage.showing = true);
-    mccg.commandPage();
-});
+window.addEventListener('hashchange', () => mccg.commandPage());
 window.addEventListener('beforeunload', () =>
     localStorage['theme'] = mccg.theme.value // 保存主题
 );

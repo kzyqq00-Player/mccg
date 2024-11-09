@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES2015",
-        "lib": ["ES2015", "DOM"],
+        "target": "ES2017",
+        "lib": ["ES2017", "DOM"],
         "outDir": "./",
         "rootDir": "./src",
         "alwaysStrict": true,
-        "removeComments": true
+        "removeComments": true,
+        "strictBindCallApply": true
     },
     "exclude": [
         "**/*.d.ts",
