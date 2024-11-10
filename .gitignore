@@ -1,14 +1,14 @@
 # Oh that's s**t
-node_modules
+node_modules/
 
 # Please don't change this paragraph.
 package-lock.json
 package.json
 
 # Storage your private files.
-.private
+.private/
 
-.vscode
+.vscode/
 
 # Those files are only useful in the production environment.
 # If you want to get those files, please add me on QQ 1561737625.
