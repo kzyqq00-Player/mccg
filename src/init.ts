@@ -120,7 +120,6 @@ const mccg: {
     commandPage: function () {
         let templateIdOfWillBeShowedPage: string;
         const setBody = function(this: typeof mccg, appendStyles: boolean) {
-            console.trace();
             this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
             document.body = this.eCommandPage;
             
