@@ -81,16 +81,16 @@ const mccg: {
         bindedChangeEvent: false as boolean,
     }, {
         set(obj, prop, value) {
-            if (prop == 'value') {
-                if (value == 'dark') {
+            if (prop === 'value') {
+                if (value === 'dark') {
                     document.head.appendChild(obj.darkStyleSheet);
                     obj.bindedChangeEvent = false;
                     obj.matcher.removeEventListener('change', obj.setFromOSDefault)
-                } else if (value == 'light') {
+                } else if (value === 'light') {
                     $('#dark-stylesheet').remove();
                     obj.bindedChangeEvent = false;
                     obj.matcher.removeEventListener('change', obj.setFromOSDefault);
-                } else if (value == 'os-default') { // nnd找了那么久的bug原来是大括号没加
+                } else if (value === 'os-default') { // nnd找了那么久的bug原来是大括号没加
                     if (!obj.bindedChangeEvent) {
                         obj.bindedChangeEvent = true;
                         obj.matcher.addEventListener('change', obj.setFromOSDefault);
@@ -107,7 +107,7 @@ const mccg: {
     eCommandPage: document.createElement('body'),
     cancelHomePageHiddened: false,
     backToHomePage: function () {
-        if (this.showingCmdPage.showing == true) {
+        if (this.showingCmdPage.showing === true) {
             if (document.body.lastChild.nodeName !== 'FOOTER')
                 this.homePage.appendChild(this.footer);
             document.body = this.homePage;
@@ -127,7 +127,7 @@ const mccg: {
                 this.eCommandPage.appendChild(this.footer);
             this.showingCmdPage.showingPage = location.hash.slice(2);
 
-            if (appendStyles == true) {
+            if (appendStyles === true) {
                 const stylesheet = document.createElement('link');
                 stylesheet.id = `command-page-${this.showingCmdPage.showingPage}-stylesheet`;
                 stylesheet.rel = 'stylesheet';
@@ -177,7 +177,7 @@ const mccg: {
     });
     initInfo();
 
-    if (obj.theme.value == 'os-default') {
+    if (obj.theme.value === 'os-default') {
         obj.theme.setFromOSDefault(obj.theme.matcher);
         obj.theme.bindedChangeEvent = true;
         obj.theme.matcher.addEventListener('change', obj.theme.setFromOSDefault);

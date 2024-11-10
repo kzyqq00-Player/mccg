@@ -1,6 +1,6 @@
 // @ts-ignore
 $('#block input').on('input', (e: EventTargetType<HTMLInputElement>) => {
-    if (mccg.cmdPage.setblock.blockSelectButtonClicked == true) 
+    if (mccg.cmdPage.setblock.blockSelectButtonClicked === true) 
         return;
     if (e.target.value === '')
         ($('#block input')[0] as HTMLInputElement).placeholder = '方块名';
