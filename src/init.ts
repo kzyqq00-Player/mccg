@@ -59,7 +59,7 @@ const mccg: {
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
             blockIdMap: void 0,
-            inputNamespaceId: function () {
+            inputNamespaceId: () => {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
                 $('#directly-input-namespace-id')[0].hidden = true;

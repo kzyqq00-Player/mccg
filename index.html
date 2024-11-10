@@ -81,18 +81,19 @@
             <label id="block">
                 <p><span class="required">要放置的方块：</span><br>
                 注意：不加minecraft:前缀会自动加上，当前版本仅支持输入原版方块名</p>
-                <p><input type="text" placeholder="方块名" style="width: 14ch">
+                <p><input type="text" placeholder="方块名">
                 <button type="button" disabled id="search-in-database">在数据库里查询</button>
                 <button type="button" id="directly-input-namespace-id">直接输入ID</button>
                 <button type="button" id="block-reset" hidden>重置</button></section>
                 <dialog id="not-found-in-database">
                     <p style="margin-bottom: 0">未在数据库中找到该方块，请手动输入ID
                     <br>如果您确实觉得您输入的方块在原版里存在，可以尝试以下方法：</p>
-                    <ol style="margin: 6px 0">
-                        <li>把方块名描述的详细些，例如：原木(<span class="wrong"></span>) 橡木原木(<span class="right"></span>)</li>
+                    <ul style="margin: 6px 0">
                         <li>不要使用其他语言的名字，例如：Air(<span class="wrong"></span>) 空气(<span class="right"></span>)</li>
-                    </ol>
+                        <li>如果你输入的是像“踏板”，“小黑”类似的俗称，请点击下面的“尝试继续搜索”按钮。</li>
+                    </ul>
                     <button type="button" id="not-found-in-database-input-id">手动输入ID</button>
+                    <button type="button" id="not-found-in-database-keep-search" title="请确认在原版里有此方块！请确认在原版里有此方块！请确认在原版里有此方块！请确认在原版里有此方块！请确认在原版里有此方块！不要捣乱！不要捣乱！不要捣乱！不要捣乱！不要捣乱！">尝试继续搜索</button>
                     <button type="button" id="not-found-in-database-cancel">取消</button>
                 </dialog>
             </label>
