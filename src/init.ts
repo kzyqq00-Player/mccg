@@ -132,9 +132,6 @@ const mccg: {
                 const stylesheet = document.createElement('link');
                 stylesheet.id = `command-page-${this.showingCmdPage.showingPage}-stylesheet`;
                 stylesheet.rel = 'stylesheet';
-                $(stylesheet).on('load', () =>
-                    document.body.hidden = false
-                );
                 stylesheet.href = `command.page.${this.showingCmdPage.showingPage}.css`;
                 // @ts-ignore
                 $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));

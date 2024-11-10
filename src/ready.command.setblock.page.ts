@@ -26,7 +26,7 @@ $('#not-found-in-database-cancel').on('click', () => {
     ($('#not-found-in-database')[0] as HTMLDialogElement).close();
     ($('#block input')[0] as HTMLInputElement).value = '';
 });
-$('#directly-input-namespace-id').on('click', () => mccg.cmdPage.setblock.inputNamespaceId);
+$('#directly-input-namespace-id').on('click', () => mccg.cmdPage.setblock.inputNamespaceId());
 $('#block-reset').on('click', (e) => {
     let input: HTMLInputElement = $('#block input')[0] as HTMLInputElement;
     let schInDatabase: HTMLButtonElement = $('#search-in-database')[0] as HTMLButtonElement;
