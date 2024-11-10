@@ -6,7 +6,7 @@ package-lock.json
 package.json
 
 # Storage your private files.
-.private/
+/.private/
 
 .vscode/
 
