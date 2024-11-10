@@ -28,8 +28,8 @@ $('#not-found-in-database-cancel').on('click', () => {
 });
 $('#directly-input-namespace-id').on('click', () => mccg.cmdPage.setblock.inputNamespaceId());
 $('#block-reset').on('click', (e) => {
-    let input: HTMLInputElement = $('#block input')[0] as HTMLInputElement;
-    let schInDatabase: HTMLButtonElement = $('#search-in-database')[0] as HTMLButtonElement;
+    const input = $('#block input')[0] as HTMLInputElement;
+    const schInDatabase = $('#search-in-database')[0] as HTMLButtonElement;
     input.placeholder = '方块名';
     input.value = '';
     schInDatabase.hidden = false;
