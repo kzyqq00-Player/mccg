@@ -6,7 +6,7 @@
     vertical-align: -5px;
 }
 
-#path #path-first-link { margin-left: 15px }
+#path :first-child + a { margin-left: 10px }
 
 #path {
     border-bottom: 2px solid rgb(128, 128, 128);
