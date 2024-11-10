@@ -48,5 +48,6 @@ $('#block-state-table tbody input').on('input', mccg.cmdPage.setblock.onBlockSta
 
 $('#block-state-add').on('click', () => {
     $('#block-state-table tbody')[0].appendChild(mccg.cmdPage.setblock.TRElement);
-    mccg.cmdPage.setblock.TRElement = mccg.cmdPage.setblock.TRElement.cloneNode(true) as any;
+    mccg.cmdPage.setblock.TRElement = mccg.cmdPage.setblock.TRElement.cloneNode(true);
+    mccg.cmdPage.setblock.TRElement.addEventListener('input', mccg.cmdPage.setblock.onBlockStateInput);
 });

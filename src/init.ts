@@ -12,7 +12,7 @@ const mccg: {
     cmdPage: {
         setblock: {
             blockStates: [string, string | number][];
-            TRElement: HTMLTableRowElement;
+            TRElement: HTMLTableRowElement | Node;
             onBlockStateInput: (e: EventTargetType<HTMLInputElement>) => void;
             selectedBlock: {
                 name: string;
@@ -51,9 +51,10 @@ const mccg: {
                 const cell = e.target.closest('td');
                 const row = cell.closest('tr');
                 const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+                const blockStates = mccg.cmdPage.setblock.blockStates;
                 // @ts-ignore
-                if (!mccg.cmdPage.setblock.blockStates[rowIndex]) mccg.cmdPage.setblock.blockStates[rowIndex] = [];
-                mccg.cmdPage.setblock.blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
+                if (!blockStates[rowIndex]) blockStates[rowIndex] = [];
+                blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
             },
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
@@ -185,7 +186,7 @@ const mccg: {
     obj.theme.darkStyleSheet.id = 'dark-stylesheet';
     obj.theme.darkStyleSheet.rel = 'stylesheet';
     obj.theme.darkStyleSheet.href = 'dark.css';
-
+    // @ts-ignore
     obj.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
     // @ts-ignore
     $(obj.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput) });
