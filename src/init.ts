@@ -1,5 +1,5 @@
 // @ts-ignore
-import('./datas.init.js').then((data: typeof import('datas.init.js')) => data.default(), (data: typeof import('datas.init.js')) => {
+(import('./datas.init.js') as Promise<typeof import('datas.init.js')>).then((data) => data.default(), (data) => {
     if (data instanceof Error && /Failed to fetch dynamically imported module: .*/.test(data.message) && window.confirm('加载关键模块失败，是否重试？错误消息：\nCurrent file: datas.init.js'))
         window.location.reload();
     else if (data.default)
