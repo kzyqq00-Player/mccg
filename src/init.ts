@@ -1,7 +1,13 @@
+// @ts-ignore
+import('./datas.init.js').then((data: typeof import('datas.init.js')) => data.default(), (data: typeof import('datas.init.js')) => {
+    if (data instanceof Error && /Failed to fetch dynamically imported module: .*/.test(data.message) && window.confirm('加载关键模块失败，是否重试？错误消息：\nCurrent file: datas.init.js'))
+        window.location.reload();
+    else if (data.default)
+        data.default();
+});
+
 type sTheme = 'os-default' | 'dark' | 'light';
 interface EventTargetType<T extends EventTarget> extends Event { target: T }
-
-declare function initInfo(): void;
 
 const mccg: {
     showingCmdPage: {
@@ -176,7 +182,6 @@ const mccg: {
     $(function () { // @ts-ignore
         $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
     });
-    initInfo();
 
     if (obj.theme.value === 'os-default') {
         obj.theme.setFromOSDefault(obj.theme.matcher);
