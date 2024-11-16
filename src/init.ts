@@ -127,7 +127,7 @@ const mccg: {
     },
     commandPage: function () {
         let templateIdOfWillBeShowedPage: string;
-        const setBody = function(this: typeof mccg, appendStyles: boolean) {
+        const setBody = (function(this: typeof mccg, appendStyles: boolean) {
             this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
             document.body = this.eCommandPage;
             
@@ -161,7 +161,7 @@ const mccg: {
             }
             
             this.showingCmdPage.showing = true;
-        }
+        }).bind(mccg);
         switch (location.hash) {
             case '#/setblock': templateIdOfWillBeShowedPage = 'setblock-page'; break;
             case '#/contact-me': templateIdOfWillBeShowedPage = 'contact-page'; break;
@@ -170,11 +170,11 @@ const mccg: {
         if (!this.showingCmdPage.showedPages.has(templateIdOfWillBeShowedPage))
             this.showingCmdPage.showedPages.add(templateIdOfWillBeShowedPage);
         else {
-            setBody.call(this, false);
+            setBody(false);
             return;
         }
 
-        setBody.call(this, true);
+        setBody(true);
     }
 };
 (function(obj) {
