@@ -177,23 +177,23 @@ const mccg: {
         setBody(true);
     }
 };
-(function(obj) {
-    obj.eCommandPage.classList.add('command-page');
+(function(mccg) {
+    mccg.eCommandPage.classList.add('command-page');
 
     $(function () { // @ts-ignore
         $('.image').on('click', (e: MccgTypes.EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
     });
 
-    if (obj.theme.value === 'os-default') {
-        obj.theme.setFromOSDefault(obj.theme.matcher);
-        obj.theme.bindedChangeEvent = true;
-        obj.theme.matcher.addEventListener('change', obj.theme.setFromOSDefault);
+    if (mccg.theme.value === 'os-default') {
+        mccg.theme.setFromOSDefault(mccg.theme.matcher);
+        mccg.theme.bindedChangeEvent = true;
+        mccg.theme.matcher.addEventListener('change', mccg.theme.setFromOSDefault);
     }
-    obj.theme.darkStyleSheet.id = 'dark-stylesheet';
-    obj.theme.darkStyleSheet.rel = 'stylesheet';
-    obj.theme.darkStyleSheet.href = 'dark.css';
+    mccg.theme.darkStyleSheet.id = 'dark-stylesheet';
+    mccg.theme.darkStyleSheet.rel = 'stylesheet';
+    mccg.theme.darkStyleSheet.href = 'dark.css';
     // @ts-ignore
-    obj.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
+    mccg.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
     // @ts-ignore
-    $(obj.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput) });
+    $(mccg.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput) });
 })(mccg);

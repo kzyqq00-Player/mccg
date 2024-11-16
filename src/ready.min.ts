@@ -1,13 +1,13 @@
-(function(obj) {
-    obj.footer = $(($('#main-page')[0] as HTMLTemplateElement).content).children('footer')[0];
-    obj.homePage = document.createElement('body');
-    obj.homePage.innerHTML = $('#main-page').html();
+(function(mccg) {
+    mccg.footer = $(($('#main-page')[0] as HTMLTemplateElement).content).children('footer')[0];
+    mccg.homePage = document.createElement('body');
+    mccg.homePage.innerHTML = $('#main-page').html();
 
-    document.body = obj.homePage;
-    obj.showingCmdPage.showing = false;
-    obj.showingCmdPage.showingPage = 'home-page';
+    document.body = mccg.homePage;
+    mccg.showingCmdPage.showing = false;
+    mccg.showingCmdPage.showingPage = 'home-page';
 
-    obj.commandPage();
+    mccg.commandPage();
 })(mccg);
 if (location.hash === '') {
     ($('#theme-select').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
