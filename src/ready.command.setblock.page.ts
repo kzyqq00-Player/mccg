@@ -22,6 +22,7 @@ $('#search-in-database').on('click', () => {
     selectedBlock.name = ($('#block input') as JQuery<HTMLInputElement>).val();
     if (blockIdMap.has(($('#block input') as JQuery<HTMLInputElement>).val())) {
         selectedBlock.id = blockIdMap.get(($('#block input') as JQuery<HTMLInputElement>).val());
+        alert('成功');
     } else
         ($('#not-found-in-database')[0] as HTMLDialogElement).showModal();
 });
