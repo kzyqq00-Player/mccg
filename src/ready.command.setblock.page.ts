@@ -11,20 +11,36 @@ $('#search-in-database').on('click', () => {
     mccg.cmdPage.setblock.blockSelectButtonClicked = true;
     $('#search-in-database')[0].innerHTML = '重新查询';
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
+    const inputValue = ($('#block input') as JQuery<HTMLInputElement>).val();
     let selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     if (selectedBlock === void 0)
         mccg.cmdPage.setblock.selectedBlock = {
             name: '',
-            id: ''
+            id: '',
+            easterEgg: {
+                times: 1,
+                value: ''
+            }
         };
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
-    selectedBlock.name = ($('#block input') as JQuery<HTMLInputElement>).val();
-    if (blockIdMap.has(($('#block input') as JQuery<HTMLInputElement>).val())) {
+    if (blockIdMap.has(inputValue)) {
+        selectedBlock.name = inputValue;
         selectedBlock.id = blockIdMap.get(($('#block input') as JQuery<HTMLInputElement>).val());
-        alert('成功');
+        if (inputValue === selectedBlock.easterEgg.value) {
+            selectedBlock.easterEgg.times ++;
+            if (selectedBlock.easterEgg.times >= 3) {
+                alert('你按你妹呢');
+                selectedBlock.easterEgg.times = 0;
+                return;
+            }
+            alert('成功');
+        } else {
+            alert('成功');
+        }
     } else
         ($('#not-found-in-database')[0] as HTMLDialogElement).showModal();
+    selectedBlock.easterEgg.value = inputValue;
 });
 $('#not-found-in-database-input-id').on('click', () => {
     ($('#not-found-in-database')[0] as HTMLDialogElement).close();

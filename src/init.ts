@@ -20,6 +20,10 @@ const mccg: {
             selectedBlock: {
                 name: string;
                 id: string;
+                easterEgg: {
+                    times: number;
+                    value: string;
+                };
             };
             blockSelectButtonClicked: boolean;
             blockIdMap: Map<string, string>;
