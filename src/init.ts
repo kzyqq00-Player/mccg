@@ -1,5 +1,5 @@
 // @ts-ignore
-import('./datas.init.js').then<MccgTypes.DIJP, MccgTypes.DIJP>((data) => data.default(), (data) => {
+import('./datas.init.js').then<MccgTypes.DIJP>((data) => data.default(), (data) => {
     if (data instanceof Error && /Failed to fetch dynamically imported module: .*/.test(data.message) && window.confirm('加载关键模块失败，是否重试？错误消息：\nCurrent file: datas.init.js'))
         window.location.reload();
     else if (data.default)
