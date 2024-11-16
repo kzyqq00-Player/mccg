@@ -8,7 +8,8 @@ package.json
 # Storage your private files.
 /.private/
 
-.vscode/
+.vscode/*.json
+!.vscode/tasks.json
 
 # Those files are only useful in the production environment.
 # If you want to get those files, please add me on QQ 1561737625.
