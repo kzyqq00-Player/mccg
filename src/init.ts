@@ -10,7 +10,7 @@ const mccg: {
     showingCmdPage: {
         showing: boolean;
         showingPage: string;
-        showedPages: string[]; // Change the type to Set<string> and not string[] please, featurely me!
+        showedPages: Set<string>;
     };
     cmdPage: {
         setblock: {
@@ -44,7 +44,7 @@ const mccg: {
     showingCmdPage: {
         showing: false,
         showingPage: 'home-page',
-        showedPages: []
+        showedPages: new Set()
     },
     cmdPage: {
         setblock: {
@@ -163,8 +163,8 @@ const mccg: {
             case '#/contact-me': templateIdOfWillBeShowedPage = 'contact-page'; break;
             default: this.backToHomePage(); return;
         }
-        if (!this.showingCmdPage.showedPages.includes(templateIdOfWillBeShowedPage))
-            this.showingCmdPage.showedPages.push(templateIdOfWillBeShowedPage);
+        if (!this.showingCmdPage.showedPages.has(templateIdOfWillBeShowedPage))
+            this.showingCmdPage.showedPages.add(templateIdOfWillBeShowedPage);
         else {
             setBody.call(this, false);
             return;
