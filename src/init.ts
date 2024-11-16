@@ -1,25 +1,22 @@
 // @ts-ignore
-(import('./datas.init.js') as Promise<typeof import('datas.init.js')>).then((data) => data.default(), (data) => {
+import('./datas.init.js').then<MccgTypes.DIJP, MccgTypes.DIJP>((data) => data.default(), (data) => {
     if (data instanceof Error && /Failed to fetch dynamically imported module: .*/.test(data.message) && window.confirm('加载关键模块失败，是否重试？错误消息：\nCurrent file: datas.init.js'))
         window.location.reload();
     else if (data.default)
         data.default();
 });
 
-type sTheme = 'os-default' | 'dark' | 'light';
-interface EventTargetType<T extends EventTarget> extends Event { target: T }
-
 const mccg: {
     showingCmdPage: {
         showing: boolean;
         showingPage: string;
-        showedPages: string[];
+        showedPages: string[]; // Change the type to Set<string> and not string[] please, featurely me!
     };
     cmdPage: {
         setblock: {
             blockStates: [string, string | number][];
             TRElement: HTMLTableRowElement | Node;
-            onBlockStateInput: (e: EventTargetType<HTMLInputElement>) => void;
+            onBlockStateInput: (e: MccgTypes.EventTargetType<HTMLInputElement>) => void;
             selectedBlock: {
                 name: string;
                 id: string;
@@ -30,7 +27,7 @@ const mccg: {
         }
     };
     theme: {
-        value: sTheme,
+        value: MccgTypes.STheme,
         setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => void;
         darkStyleSheet: HTMLLinkElement,
         matcher: MediaQueryList,
@@ -76,7 +73,7 @@ const mccg: {
         }
     },
     theme: new Proxy({
-        value: localStorage['theme'] as sTheme || 'os-default',
+        value: localStorage['theme'] as MccgTypes.STheme || 'os-default',
         setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => {
             if (e.matches && $('#dark-stylesheet').length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
@@ -140,7 +137,7 @@ const mccg: {
                 stylesheet.rel = 'stylesheet';
                 stylesheet.href = `command.page.${this.showingCmdPage.showingPage}.css`;
                 // @ts-ignore
-                $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
+                $('.image').on('click', (e: MccgTypes.EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
                 document.head.appendChild(stylesheet);
             }
 
@@ -180,7 +177,7 @@ const mccg: {
     obj.eCommandPage.classList.add('command-page');
 
     $(function () { // @ts-ignore
-        $('.image').on('click', (e: EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
+        $('.image').on('click', (e: MccgTypes.EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
     });
 
     if (obj.theme.value === 'os-default') {

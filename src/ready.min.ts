@@ -11,7 +11,7 @@
 })(mccg);
 if (location.hash === '') {
     ($('#theme-select').children(`[value=${mccg.theme.value}]`)[0] as HTMLOptionElement).selected = true;
-    mccg.theme.value = $('#theme-select').val() as sTheme;
+    mccg.theme.value = $('#theme-select').val() as MccgTypes.STheme;
 }
 
 $('.left-menu li').on('click', (e) => {
@@ -27,7 +27,7 @@ $('.left-menu li').on('click', (e) => {
     }
 }); // 左侧菜单栏选项选中
 $('#theme-select').on('change', () =>
-    mccg.theme.value = $('#theme-select').val() as sTheme
+    mccg.theme.value = $('#theme-select').val() as MccgTypes.STheme
 );
 window.addEventListener('hashchange', () => mccg.commandPage());
 window.addEventListener('beforeunload', () =>

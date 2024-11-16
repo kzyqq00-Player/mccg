@@ -1,5 +1,5 @@
 // @ts-ignore
-$('#block input').on('input', (e: EventTargetType<HTMLInputElement>) => {
+$('#block input').on('input', (e: MccgTypes.EventTargetType<HTMLInputElement>) => {
     if (mccg.cmdPage.setblock.blockSelectButtonClicked === true) 
         return;
     if (e.target.value === '')
@@ -60,7 +60,7 @@ $('#block-reset').on('click', (e) => {
     e.target.hidden = true;
 });
 // @ts-ignore
-$('#block-state-switch').on('change', (e: EventTargetType<HTMLInputElement>) => {
+$('#block-state-switch').on('change', (e: MccgTypes.EventTargetType<HTMLInputElement>) => {
     $('.block-state-input').each((i) => { $('.block-state-input')[i].hidden = !e.target.checked });
 });
 // @ts-ignore

@@ -15,7 +15,6 @@
         "module": "ES2020"
     },
     "exclude": [
-        "**/*.d.ts",
         "node_modules"
     ]
 }
