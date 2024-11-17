@@ -35,7 +35,7 @@ $('#search-in-database').on('click', async () => {
                 console.dir(err);
                 console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
                 console.groupEnd();
-                if (err instanceof TypeError && (/Failed to fetch dynamically imported module: .*/.test(err.message) || /GET .* net::.* 404\(Not Found\)/.test(err.message))) {
+                if (err instanceof TypeError && /Failed to fetch dynamically imported module: .*/.test(err.message)) {
                     if (window.confirm('无法在数据库中搜索，因为加载数据库失败\n详细原因请查看控制台\n是否重试？')) {
                         try { await retry }
                         catch { fRetry() }
