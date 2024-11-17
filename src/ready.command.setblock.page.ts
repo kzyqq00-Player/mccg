@@ -42,7 +42,7 @@ $('#search-in-database').on('click', async () => {
                     }
                 } else
                     window.alert('出现未知错误导致数据库加载失败，打开控制台查看详情');
-                mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because network): datas.js')
+                mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because the network exception): datas.js')
             }; fRetry();
             skip = true;
         }
