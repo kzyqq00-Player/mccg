@@ -28,7 +28,7 @@ $('#search-in-database').on('click', async () => {
         try {
             resp = await retry;
         } catch (err) {
-            const fRetry = async function () {
+            const fRetry = async () => {
                 console.group('失败原因');
                 console.error(err);
                 console.log('错误对象：');
