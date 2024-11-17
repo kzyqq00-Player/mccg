@@ -28,14 +28,14 @@ $('#search-in-database').on('click', async () => {
         try {
             resp = await retry;
         } catch (err) {
-            const fRetry = (async function () {
+            const fRetry = async function () {
                 console.group('失败原因');
                 console.error(err);
                 console.log('错误对象：');
                 console.dir(err);
                 console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
                 console.groupEnd();
-                if (err instanceof TypeError && /Failed to fetch dynamically imported module: .*/.test(err.message)) {
+                if (err instanceof TypeError && (/Failed to fetch dynamically imported module: .*/.test(err.message) || /GET .* net::.* 404\(Not Found\)/.test(err.message))) {
                     if (window.confirm('无法在数据库中搜索，因为加载数据库失败\n详细原因请查看控制台\n是否重试？')) {
                         try { await retry }
                         catch { fRetry() }
@@ -43,7 +43,7 @@ $('#search-in-database').on('click', async () => {
                 } else
                     window.alert('出现未知错误导致数据库加载失败，打开控制台查看详情');
                 mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because network): datas.js')
-            }); fRetry();
+            }; fRetry();
             return;
         }
         mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
