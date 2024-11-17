@@ -46,7 +46,7 @@ $('#search-in-database').on('click', async () => {
             }); fRetry();
             return;
         }
-        mccg.cmdPage.setblock.blockIdMap = resp.default;
+        mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
     }
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
