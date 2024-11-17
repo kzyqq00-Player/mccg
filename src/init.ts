@@ -207,10 +207,10 @@ const mccg: {
         async get() {
             if (mccg.temp.errorReport) {
                 try {
-                    await navigator.clipboard.writeText(mccg.temp.errorReport);
+                    navigator.clipboard.writeText(mccg.temp.errorReport);
                 } catch (e) {
                     console.warn('请点击一下页面任意位置');
-                    await new Promise((resolve) => {
+                    await new Promise<true>((resolve) => {
                         let key = setInterval(() => {
                             if (document.hasFocus()) {
                                 clearInterval(key);
@@ -221,9 +221,7 @@ const mccg: {
                     navigator.clipboard.writeText(mccg.temp.errorReport);
                 }
                 console.info('复制成功');
-            }
-            else
-                console.error(new TypeError('Error report not found'));
+            } else throw new TypeError('Error report not found.');
         },
     });
 })(mccg);
