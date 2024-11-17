@@ -1,11 +1,3 @@
-// @ts-ignore
-import('./datas.init.js').then<MccgTypes.DIJP>((data) => data.default(), (data) => {
-    if (data instanceof Error && /Failed to fetch dynamically imported module: .*/.test(data.message) && window.confirm('加载关键模块失败，是否重试？错误消息：\nCurrent file: datas.init.js'))
-        window.location.reload();
-    else if (data.default)
-        data.default();
-});
-
 const mccg: {
     showingCmdPage: {
         showing: boolean;
@@ -37,13 +29,16 @@ const mccg: {
         matcher: MediaQueryList,
         bindedChangeEvent: boolean,
     };
-    temp: object | null;
+    temp: Partial<{
+        errorReport: string;
+    }>;
     footer: HTMLElement;
     homePage: HTMLBodyElement;
     eCommandPage: HTMLBodyElement;
     cancelHomePageHiddened: boolean;
     backToHomePage: (this: typeof mccg) => void;
     commandPage: (this: typeof mccg) => void;
+    generateErrorReport: (error: Error, description?: string) => string;
 } = {
     showingCmdPage: {
         showing: false,
@@ -109,7 +104,7 @@ const mccg: {
             return Reflect.set(...arguments);
         }
     }),
-    temp: null,
+    temp: {},
     footer: void 0,
     homePage: void 0,
     eCommandPage: document.createElement('body'),
@@ -175,14 +170,25 @@ const mccg: {
         }
 
         setBody(true);
+    },
+    generateErrorReport: (error, description) => {
+        const { name, stack, message } = error;
+        return "Oops, my body's color is red now!\n\n"
+            + (description ? `Description:\n// ${description}\n\n` : '')
+            + `Error message: "${error}"\n\nError object: ${JSON.stringify({
+                name,
+                stack,
+                message
+            }, null, 1).replace(/\\n/g, '\n')}.\n`
+            + (function () {
+                let rand = Math.random();
+                return rand >= 0 && rand <= 0.009 ? "\nDrink a coffee now? Submit to you error report's person is so lazy, he can't read the error report!\n"
+                    + "Drink a coffee!" : '';
+            })(); // This just a easter egg don't scold me :)
     }
 };
 (function(mccg) {
     mccg.eCommandPage.classList.add('command-page');
-
-    $(function () { // @ts-ignore
-        $('.image').on('click', (e: MccgTypes.EventTargetType<HTMLImageElement>) => open(e.target.src, '_self'));
-    });
 
     if (mccg.theme.value === 'os-default') {
         mccg.theme.setFromOSDefault(mccg.theme.matcher);
@@ -196,4 +202,28 @@ const mccg: {
     mccg.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
     // @ts-ignore
     $(mccg.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput) });
+
+    Object.defineProperty(window, 'copyError', {
+        async get() {
+            if (mccg.temp.errorReport) {
+                try {
+                    await navigator.clipboard.writeText(mccg.temp.errorReport);
+                } catch (e) {
+                    console.warn('请点击一下页面任意位置');
+                    await new Promise((resolve) => {
+                        let key = setInterval(() => {
+                            if (document.hasFocus()) {
+                                clearInterval(key);
+                                resolve(true);
+                            }
+                        }, 100);
+                    });
+                    navigator.clipboard.writeText(mccg.temp.errorReport);
+                }
+                console.info('复制成功');
+            }
+            else
+                console.error(new TypeError('Error report not found'));
+        },
+    });
 })(mccg);

@@ -7,7 +7,7 @@ $('#block input').on('input', (e: MccgTypes.EventTargetType<HTMLInputElement>) =
     ($('#search-in-database')[0] as HTMLButtonElement).disabled = e.target.value === '' ? true : false;
 });
 
-$('#search-in-database').on('click', () => {
+$('#search-in-database').on('click', async () => {
     mccg.cmdPage.setblock.blockSelectButtonClicked = true;
     $('#search-in-database')[0].innerHTML = '重新查询';
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
@@ -22,6 +22,32 @@ $('#search-in-database').on('click', () => {
                 value: ''
             }
         };
+    if (mccg.cmdPage.setblock.blockIdMap === void 0) {
+        let retry = import('./datas.init');
+        let resp: Awaited<typeof retry>;
+        try {
+            resp = await retry;
+        } catch (err) {
+            const fRetry = (async function () {
+                console.group('失败原因');
+                console.error(err);
+                console.log('错误对象：');
+                console.dir(err);
+                console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
+                console.groupEnd();
+                if (err instanceof TypeError && /Failed to fetch dynamically imported module: .*/.test(err.message)) {
+                    if (window.confirm('无法在数据库中搜索，因为加载数据库失败\n详细原因请查看控制台\n是否重试？')) {
+                        try { await retry }
+                        catch { fRetry() }
+                    }
+                } else
+                    window.alert('出现未知错误导致数据库加载失败，打开控制台查看详情');
+                mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because network): datas.init.js')
+            }); fRetry();
+            return;
+        }
+        mccg.cmdPage.setblock.blockIdMap = resp.default;
+    }
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
     if (blockIdMap.has(inputValue)) {

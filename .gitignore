@@ -13,6 +13,7 @@ package.json
 
 # Those files are only useful in the production environment.
 # If you want to get those files, please add me on QQ 1561737625.
+/src/datas.init.ts
 datas.init.js
 favicon.png
 init.js
