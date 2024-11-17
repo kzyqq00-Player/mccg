@@ -126,11 +126,11 @@ const mccg: {
             this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
             document.body = this.eCommandPage;
             
-            if (document.body.lastChild.nodeName !== 'FOOTER')
+            if (document.body.lastElementChild.tagName !== 'FOOTER')
                 this.eCommandPage.appendChild(this.footer);
             this.showingCmdPage.showingPage = location.hash.slice(2);
 
-            if (appendStyles === true) {
+            if (appendStyles) {
                 const stylesheet = document.createElement('link');
                 stylesheet.id = `command-page-${this.showingCmdPage.showingPage}-stylesheet`;
                 stylesheet.rel = 'stylesheet';
