@@ -8,7 +8,7 @@ const mccg: {
         setblock: {
             blockStates: [string, string | number][];
             TRElement: HTMLTableRowElement | Node;
-            onBlockStateInput: (e: MccgTypes.EventTargetType<HTMLInputElement>) => void;
+            onBlockStateInput(e: MccgTypes.EventTargetType<HTMLInputElement>): void;
             selectedBlock: {
                 name: string;
                 id: string;
@@ -19,12 +19,12 @@ const mccg: {
             };
             blockSelectButtonClicked: boolean;
             blockIdMap: Map<string, string>;
-            inputNamespaceId: () => void;
+            inputNamespaceId(): void;
         }
     };
     theme: {
         value: MccgTypes.STheme,
-        setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => void;
+        setFromOSDefault(e: MediaQueryListEvent | MediaQueryList): void;
         darkStyleSheet: HTMLLinkElement,
         matcher: MediaQueryList,
         bindedChangeEvent: boolean,
@@ -36,9 +36,9 @@ const mccg: {
     homePage: HTMLBodyElement;
     eCommandPage: HTMLBodyElement;
     cancelHomePageHiddened: boolean;
-    backToHomePage: (this: typeof mccg) => void;
-    commandPage: (this: typeof mccg) => void;
-    generateErrorReport: (error: Error, description?: string) => string;
+    backToHomePage(this: typeof mccg): void;
+    commandPage(this: typeof mccg): void;
+    generateErrorReport(error: Error, description?: string): string;
 } = {
     showingCmdPage: {
         showing: false,
