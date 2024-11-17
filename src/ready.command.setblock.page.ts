@@ -10,7 +10,6 @@ $('#block input').on('input', (e: MccgTypes.EventTargetType<HTMLInputElement>) =
 $('#search-in-database').on('click', async () => {
     mccg.cmdPage.setblock.blockSelectButtonClicked = true;
     $('#search-in-database')[0].innerHTML = '重新查询';
-    const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     const inputValue = ($('#block input') as JQuery<HTMLInputElement>).val();
     let selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     if (selectedBlock === void 0)
@@ -25,6 +24,7 @@ $('#search-in-database').on('click', async () => {
     if (mccg.cmdPage.setblock.blockIdMap === void 0) {
         let retry = import('datas');
         let resp: Awaited<typeof retry>;
+        let skip: boolean;
         try {
             resp = await retry;
         } catch (err) {
@@ -44,10 +44,11 @@ $('#search-in-database').on('click', async () => {
                     window.alert('出现未知错误导致数据库加载失败，打开控制台查看详情');
                 mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because network): datas.js')
             }; fRetry();
-            return;
+            skip = true;
         }
-        mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
+        !skip && (mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap);
     }
+    const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
     if (blockIdMap.has(inputValue)) {
