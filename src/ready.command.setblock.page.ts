@@ -46,7 +46,10 @@ $('#search-in-database').on('click', async () => {
             }; fRetry();
             skip = true;
         }
-        !skip && (mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap);
+        if (skip)
+            return;
+        else
+            mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
     }
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
