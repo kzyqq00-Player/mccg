@@ -24,7 +24,6 @@ $('#search-in-database').on('click', async () => {
     if (mccg.cmdPage.setblock.blockIdMap === void 0) {
         let retry = import('datas');
         let resp: Awaited<typeof retry>;
-        let skip: boolean;
         try {
             resp = await retry;
         } catch (err) {
@@ -44,12 +43,9 @@ $('#search-in-database').on('click', async () => {
                     window.alert('出现未知错误导致数据库加载失败，打开控制台查看详情');
                 mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because the network exception): datas.js')
             }; fRetry();
-            skip = true;
-        }
-        if (skip)
             return;
-        else
-            mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
+        }
+        mccg.cmdPage.setblock.blockIdMap = resp.blockIdMap;
     }
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
