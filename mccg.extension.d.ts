@@ -1,6 +1,8 @@
 declare namespace Mccg {
     type Optional<T, K extends keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
 
+    type JSONStringfyObject = string | number | boolean | null | { [key: string]: JSONStringfyObject } | JSONStringfyObject[];
+
     interface Extension extends EventTarget {
         /**
          * The extension's name, should be unique of all extensions.
@@ -35,21 +37,21 @@ declare namespace Mccg {
          */
         storage: object | null;
         /**
-         * The extension system assigned localstorage space.
+         * `localStorage` space allocated by the extension system.
          * 
          * Don't trying storage something in `window.localStorage`, the code review will waring you :)
          * 
-         * You can use `Storage API` to operation this object.
+         * When you modify something within this object, it will be processed by `JSON.stringify` and stored in `localStorage`.
          */
-        localStorage?: Storage;
+        localStorage?: JSONStringfyObject;
         /**
-         * The extension system assigned sessionStorage space.
+         * `sessionStorage` space allocated by the extension system.
          * 
          * Don't trying storage something in `window.sessionStorage`, the code review will waring you :)
          * 
-         * You can use `Storage API` to operation this object.
+         * When you modify something within this object, it will be processed by `JSON.stringify` and stored in `sessionStorage`.
          */
-        sessionStorage?: Storage;
+        sessionStorage?: JSONStringfyObject;
         /**
          * @param options We don't know passed a boolean will happening what, but we don't care :)
          */
