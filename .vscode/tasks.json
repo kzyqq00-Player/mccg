@@ -2,17 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "TypeScript Compiler Watch Mode",
-            "type": "shell",
-            "command": "tsc",
-            "args": [
-                "--watch"
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            "option": "watch",
+            "problemMatcher": [
+                "$tsc-watch"
             ],
             "group": "build",
-            "runOptions": {
-                "runOn": "folderOpen"
-            },
-            "isBackground": true
+            "label": "TypeScript Compiler Watch Mode"
         }
     ]
 }
