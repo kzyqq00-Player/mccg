@@ -19,7 +19,7 @@ declare namespace Mccg {
          * 
          * @param this Current extension.
          */
-        readonly entrance: (this: Extension) => void;
+        entrance(this: Extension): void;
         /**
          * It means the extension is or not registed.
          */
@@ -79,29 +79,26 @@ declare namespace Mccg {
      */
     type ArgHandler<T> = T | (() => T);
 
-    interface ExtensionStatic {
-        new (option: InitExtension): Extension;
+    interface ExtensionConstructor {
+        new(option: InitExtension): Extension;
         prototype: Extension;
 
         // Extensions' operation
-        register: (...extensions: Extension[]) => void;
-        unregister: (...extensions: Extension[]) => void;
+        register(...extensions: Extension[]): void;
         /**
-         * All extensions. Contains registed and unregisted extensions.
-         * 
-         * If you want get all registed extensions, look for this example:
-         * @example
-         * let extensions = MccgExtension.extensions;
-         * let result = extensions.filter((e) => e.registed);
-         * @description Then the `result` will be registed extensions
+         * If `MccgExtension.extensions` does not contain one of the extension parameters, then the method will throw a `TypeError`.
          */
-        extensions: Extension[];
+        unregister(...extensions: Extension[]): void;
+        /**
+         * All registed extensions.
+         */
+        get extensions(): Extension[];
         /**
          * Like the `window`, but we won't developers use `window` storage vars.
          * 
          * This object can let multiple extensions transfer datas.
          */
-        global: object;
+        readonly global: object;
 
         // Tool method
         /**
@@ -195,4 +192,4 @@ declare namespace Mccg {
     }
 }
 
-declare var MccgExtension: Mccg.ExtensionStatic;
+declare var MccgExtension: Mccg.ExtensionConstructor;
