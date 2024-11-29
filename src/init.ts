@@ -207,14 +207,14 @@ const mccg: {
         async get() {
             if (mccg.temp.errorReport) {
                 try {
-                    navigator.clipboard.writeText(mccg.temp.errorReport);
+                    await navigator.clipboard.writeText(mccg.temp.errorReport);
                 } catch (e) {
                     console.warn('请点击一下页面任意位置');
-                    await new Promise<true>((resolve) => {
+                    await new Promise<void>((resolve) => {
                         let key = setInterval(() => {
                             if (document.hasFocus()) {
                                 clearInterval(key);
-                                resolve(true);
+                                resolve();
                             }
                         }, 100);
                     });
