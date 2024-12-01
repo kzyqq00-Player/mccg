@@ -156,7 +156,7 @@ const mccg: {
             }
             
             this.showingCmdPage.showing = true;
-        }).bind(mccg);
+        }).bind(this);
         switch (location.hash) {
             case '#/setblock': templateIdOfWillBeShowedPage = 'setblock-page'; break;
             case '#/contact-me': templateIdOfWillBeShowedPage = 'contact-page'; break;
