@@ -1,4 +1,4 @@
-[English](./EN.md) | 简体中文
+[English](./CONTRIBUTING.md) | 简体中文
 
 抱歉，文档和注释还没有完善。
 

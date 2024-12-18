@@ -1,10 +1,8 @@
 # mccg
 
-English | [简体中文](README-zh-hans-cn.md)
+一个MC指令生成器。
 
-The Minecraft command generator yeah.
+## 贡献
+无论如何，请确保安装了[Node.js](https://nodejs.org)和[npm](http://npmjs.org)。
 
-## Contribution
-On anyway, you need to install [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com).
-
-For learn more, [click this](docs/EN.md).
+这是最基本的准备，如果你要更深层次的开发，请阅读[这个文档](docs/ZH-HANS-CN.md)。
