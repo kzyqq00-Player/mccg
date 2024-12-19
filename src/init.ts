@@ -73,7 +73,7 @@ const mccg: {
     },
     theme: new Proxy({
         value: localStorage['theme'] as MccgTypes.STheme || 'os-default',
-        setFromOSDefault: (e: MediaQueryListEvent | MediaQueryList) => {
+        setFromOSDefault: (e: { matches: boolean }) => {
             if (e.matches && $('#dark-stylesheet').length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
             else if (!e.matches && $('#dark-stylesheet').length > 0)
