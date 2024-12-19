@@ -1,5 +1,3 @@
-[English](./CONTRIBUTING.md) | 简体中文
-
 抱歉，文档和注释还没有完善。
 
 ## 基本准备
