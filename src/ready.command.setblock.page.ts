@@ -24,6 +24,12 @@ $('#search-in-database').on('click', async () => {
         try {
             res = (await import('datas')).blockIdMap;
         } catch (err) {
+            console.group('失败原因');
+            console.error(err);
+            console.log('错误对象: ');
+            console.dir(err);
+            console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
+            console.groupEnd();
             alert('数据库加载失败, 打开控制台查看详情');
             mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because the network exception): datas.js')
             return;
