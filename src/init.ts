@@ -18,7 +18,7 @@ const mccg: {
                 };
             };
             blockSelectButtonClicked: boolean;
-            blockIdMap: Map<string, string>;
+            blockIdMap: { [key: string]: string };
             inputNamespaceId(): void;
         }
     };

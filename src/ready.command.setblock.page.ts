@@ -1,10 +1,8 @@
 // @ts-ignore
 $('#block input').on('input', (e: MccgTypes.EventTargetType<HTMLInputElement>) => {
-    if (mccg.cmdPage.setblock.blockSelectButtonClicked === true) 
-        return;
     if (e.target.value === '')
         ($('#block input')[0] as HTMLInputElement).placeholder = '方块名';
-    ($('#search-in-database')[0] as HTMLButtonElement).disabled = e.target.value === '' ? true : false;
+    ($('#search-in-database')[0] as HTMLButtonElement).disabled = Boolean(e.target.value === '');
 });
 
 $('#search-in-database').on('click', async () => {
@@ -50,9 +48,9 @@ $('#search-in-database').on('click', async () => {
     const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
-    if (blockIdMap.has(inputValue)) {
+    if (Object.values(blockIdMap).includes(inputValue)) {
         selectedBlock.name = inputValue;
-        selectedBlock.id = blockIdMap.get(($('#block input') as JQuery<HTMLInputElement>).val());
+        selectedBlock.id = blockIdMap[($('#block input') as JQuery<HTMLInputElement>).val()];
         
         if (inputValue === selectedBlock.easterEgg.value) {
             selectedBlock.easterEgg.times++;
