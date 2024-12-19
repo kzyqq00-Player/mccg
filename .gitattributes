@@ -1,2 +1,3 @@
 src/datas.ts linguist-detectable=false
 mccg.extension.d.ts linguist-detectable=false
+jquery-3.7.1.min.js linguist-detectable=false

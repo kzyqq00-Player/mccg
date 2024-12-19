@@ -1,12 +1,8 @@
-# Oh that's s**t
+# shit
 node_modules/
 
-# Please don't change this paragraph.
-package-lock.json
-package.json
-
-# Storage your private files.
-/.private/
+# package-lock.json
+# package.json
 
 .vscode/*.json
 !.vscode/tasks.json
@@ -14,9 +10,5 @@ package.json
 # Those files are only useful in the production environment.
 # If you want to get those files, please add me on QQ 1561737625.
 datas.js
-favicon.png
-init.js
-jquery-3.7.1.min.js
-ready.command.setblock.page.js
-ready.min.js
-images/
+/images/
+/dist/

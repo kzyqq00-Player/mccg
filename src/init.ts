@@ -122,7 +122,7 @@ const mccg: {
     },
     commandPage: function () {
         let templateIdOfWillBeShowedPage: string;
-        const setBody = (function(this: typeof mccg, appendStyles: boolean) {
+        const setBody = (function (this: typeof mccg, appendStyles: boolean) {
             this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
             document.body = this.eCommandPage;
             
@@ -144,7 +144,7 @@ const mccg: {
                 const onlyThisCommandPageScript = document.createElement('script');
                 onlyThisCommandPageScript.id = `ready-command-${this.showingCmdPage.showingPage}-page`;
                 onlyThisCommandPageScript.classList.add('command-page-scripts');
-                onlyThisCommandPageScript.src = `ready.command.${this.showingCmdPage.showingPage}.page.js`;
+                onlyThisCommandPageScript.src = `dist/ready.command.${this.showingCmdPage.showingPage}.page.js`;
 
                 const universalScript = document.createElement('script');
                 universalScript.id = 'ready-command-page';
