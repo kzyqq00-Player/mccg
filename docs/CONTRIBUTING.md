@@ -23,7 +23,9 @@ npm config set registry https://registry.npmmirror.com
 ## ❗注意事项❗
 因为历史原因，所有页面统称为命令页面，不分为命令页面和普通页面。
 
-请使用.private文件夹存储您的私有文件。除非有特殊需求，否则请勿修改.gitignore文件。
+在HTML文件里请尽量使用语义化标签，尽量不要使用`<div>`。
+
+在TS中请尽量加上分号而不是直接换行。
 
 ## 文件结构 <!-- 请在每一行结束加上<br />以实现零行间距 -->
 `docs/` 文档<br />
