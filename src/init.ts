@@ -204,24 +204,32 @@ const mccg: {
     $(mccg.cmdPage.setblock.TRElement)[0].childNodes.forEach((e) => { $(e).on('input', mccg.cmdPage.setblock.onBlockStateInput) });
 
     Object.defineProperty(window, 'copyError', {
-        async get() {
+        get() {
             if (mccg.temp.errorReport) {
-                try {
-                    await navigator.clipboard.writeText(mccg.temp.errorReport);
-                } catch (e) {
-                    console.warn('请点击一下页面任意位置');
-                    await new Promise<void>((resolve) => {
-                        let key = setInterval(() => {
-                            if (document.hasFocus()) {
-                                clearInterval(key);
-                                resolve();
-                            }
-                        }, 100);
+                let onSuccess = () => {
+                    console.info('复制成功');
+                    onSuccess = () => { };
+                };
+                const copy = () => {
+                    navigator.clipboard.writeText(mccg.temp.errorReport).then(onSuccess, () => {
+                        console.warn('由于技术限制, 请点击一下页面任意位置');
+                        new Promise<void>((resolve) => {
+                            const id = setInterval(() => {
+                                if (document.hasFocus()) {
+                                    clearInterval(id);
+                                    resolve();
+                                }
+                            }, 100);
+                        }).then(() => {
+                            onSuccess();
+                            copy();
+                        });
                     });
-                    navigator.clipboard.writeText(mccg.temp.errorReport);
-                }
-                console.info('复制成功');
-            } else throw new TypeError('Error report not found.');
+                };
+                copy();
+            } else throw new TypeError('找不到错误报告!');
+            return () => {};
         },
+        enumerable: true
     });
 })(mccg);
