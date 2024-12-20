@@ -1,45 +1,4 @@
-const mccg: {
-    showingCmdPage: {
-        showing: boolean;
-        showingPage: string;
-        showedPages: Set<string>;
-    };
-    cmdPage: {
-        setblock: {
-            blockStates: [string, string | number][];
-            TRElement: HTMLTableRowElement | Node;
-            onBlockStateInput(e: MccgTypes.EventTargetType<HTMLInputElement>): void;
-            selectedBlock: {
-                name: string;
-                id: string;
-                easterEgg: {
-                    times: number;
-                    value: string;
-                };
-            };
-            blockSelectButtonClicked: boolean;
-            blockIdMap: { [key: string]: string };
-            inputNamespaceId(): void;
-        }
-    };
-    theme: {
-        value: MccgTypes.STheme,
-        setFromOSDefault(e: MediaQueryListEvent | MediaQueryList): void;
-        darkStyleSheet: HTMLLinkElement,
-        matcher: MediaQueryList,
-        bindedChangeEvent: boolean,
-    };
-    temp: Partial<{
-        errorReport: string;
-    }>;
-    footer: HTMLElement;
-    homePage: HTMLBodyElement;
-    eCommandPage: HTMLBodyElement;
-    cancelHomePageHiddened: boolean;
-    backToHomePage(this: typeof mccg): void;
-    commandPage(this: typeof mccg): void;
-    generateErrorReport(error: Error, description?: string): string;
-} = {
+const mccg: MccgTypes.MccgObject = {
     showingCmdPage: {
         showing: false,
         showingPage: 'home-page',
@@ -54,13 +13,12 @@ const mccg: {
                 const row = cell.closest('tr');
                 const rowIndex = Array.from(row.parentNode.children).indexOf(row);
                 const blockStates = mccg.cmdPage.setblock.blockStates;
-                // @ts-ignore
                 if (!blockStates[rowIndex]) blockStates[rowIndex] = [];
                 blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
             },
             selectedBlock: void 0,
             blockSelectButtonClicked: false,
-            blockIdMap: void 0,
+            idBlockMap: void 0,
             inputNamespaceId: () => {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
@@ -181,7 +139,7 @@ const mccg: {
                 message
             }, null, 1).replace(/\\n/g, '\n')}.\n`
             + (function () {
-                let rand = Math.random();
+                const rand = Math.random();
                 return rand >= 0 && rand <= 0.009 ? "\nDrink a coffee now? Submit to you error report's person is so lazy, he can't read the error report!\n"
                     + "Drink a coffee!" : '';
             })(); // This just a easter egg don't scold me :)

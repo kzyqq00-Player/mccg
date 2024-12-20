@@ -19,29 +19,29 @@ $('#search-in-database').on('click', async () => {
                 value: ''
             }
         };
-    if (!mccg.cmdPage.setblock.blockIdMap) {
-        let res: Awaited<typeof import('datas')>['blockIdMap'];
+    if (!mccg.cmdPage.setblock.idBlockMap) {
+        let res: Awaited<typeof import('datas')>['idBlockMap'];
         try {
-            res = (await import('datas')).blockIdMap;
-        } catch (err) {
+            res = (await import('datas')).idBlockMap;
+        } catch (e) {
             console.group('失败原因');
-            console.error(err);
+            console.error(e);
             console.log('错误对象: ');
-            console.dir(err);
+            console.dir(e);
             console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
             console.groupEnd();
             alert('数据库加载失败, 打开控制台查看详情');
-            mccg.temp.errorReport = mccg.generateErrorReport(err, 'Failed to load file (maybe because the network exception): datas.js')
+            mccg.temp.errorReport = mccg.generateErrorReport(e, 'Failed to load file (maybe because the network exception): datas.js')
             return;
         }
-        mccg.cmdPage.setblock.blockIdMap = res;
+        mccg.cmdPage.setblock.idBlockMap = res;
     }
-    const blockIdMap = mccg.cmdPage.setblock.blockIdMap;
+    const idBlockMap = mccg.cmdPage.setblock.idBlockMap;
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
-    if (Object.values(blockIdMap).includes(inputValue)) {
+    if (Object.values(idBlockMap).includes(inputValue)) {
         selectedBlock.name = inputValue;
-        selectedBlock.id = blockIdMap[($('#block input') as JQuery<HTMLInputElement>).val()];
+        selectedBlock.id = idBlockMap[($('#block input') as JQuery<HTMLInputElement>).val()];
         
         if (inputValue === selectedBlock.easterEgg.value) {
             selectedBlock.easterEgg.times++;
