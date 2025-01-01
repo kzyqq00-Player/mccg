@@ -6,9 +6,14 @@
 
 ## 如何使用
 
-从Release下载最新版本, 然后使用Nginx或类似的工具在本地搭建一个服务器(因为浏览器限制, 在本地直接打开的话体验不到完整功能)并访问。
-
-注: 入口文件为[`index.html`](./index.html)。
+安装[Node.js](https://nodejs.org)和[npm](https://npmjs.com)(npm应该是Node.js自带的), clone这个仓库, 第一次开服运行：
+```bash
+npm install
+```
+开服就运行：
+```bash
+node ./server/server.mjs
+```
 
 ## 待办事项
 
