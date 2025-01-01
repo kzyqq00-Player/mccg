@@ -31,7 +31,7 @@ $('#theme-select').on('change', () =>
 );
 window.addEventListener('hashchange', () => mccg.commandPage());
 window.addEventListener('beforeunload', () =>
-    localStorage['theme'] = mccg.theme.value // 保存主题
+    localStorage.setItem('theme', mccg.theme.value) // 保存主题
 );
 /* $(window).on('beforeunload', (e) => {
     e.preDefault();

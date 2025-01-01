@@ -30,7 +30,7 @@ const mccg: MccgTypes.MccgObject = {
         }
     },
     theme: new Proxy({
-        value: localStorage['theme'] as MccgTypes.STheme || 'os-default',
+        value: localStorage.getItem('theme') as MccgTypes.STheme ?? 'os-default',
         setFromOSDefault: (e: { matches: boolean }) => {
             if (e.matches && $('#dark-stylesheet').length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
