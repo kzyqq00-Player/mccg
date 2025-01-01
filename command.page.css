@@ -1,26 +1,33 @@
+/* 恢复 .command-page 的默认外边距 */
 .command-page { margin: revert }
 
+/* 设置 #path 内图片的大小和样式 */
 #path img {
     width: 20px; height: 20px;
     cursor: pointer;
     vertical-align: -5px;
 }
 
+/* 设置 #path 内第一个子元素后的 a 标签的左外边距 */
 #path :first-child + a { margin-left: 10px }
 
+/* 设置 #path 的边框、内边距和外边距 */
 #path {
     border-bottom: 2px solid rgb(128, 128, 128);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
+/* 将 label 设置为块级元素 */
 label { display: block }
 
+/* 为 .required 元素添加红色星号 */
 .required::after {
     content: '*';
     color: red;
 }
 
+/* 设置 .help-icon 的垂直对齐 */
 .help-icon {
     vertical-align: 4px;
 }

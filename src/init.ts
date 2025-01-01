@@ -1,13 +1,13 @@
 const mccg: MccgTypes.MccgObject = {
     showingCmdPage: {
-        showing: false,
-        showingPage: 'home-page',
-        showedPages: new Set()
+        showing: false, // 是否显示命令页面
+        showingPage: 'home-page', // 当前显示的页面
+        showedPages: new Set() // 已显示的页面集合
     },
     cmdPage: {
         setblock: {
-            blockStates: [['', '']],
-            TRElement: document.createElement('tr'),
+            blockStates: [['', '']], // 块状态数组
+            TRElement: document.createElement('tr'), // 表格行元素
             onBlockStateInput: (e) => {
                 const cell = e.target.closest('td');
                 const row = cell.closest('tr');
@@ -16,9 +16,9 @@ const mccg: MccgTypes.MccgObject = {
                 if (!blockStates[rowIndex]) blockStates[rowIndex] = [];
                 blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
             },
-            selectedBlock: void 0,
-            blockSelectButtonClicked: false,
-            idBlockMap: void 0,
+            selectedBlock: void 0, // 选中的块
+            blockSelectButtonClicked: false, // 块选择按钮是否被点击
+            idBlockMap: void 0, // ID块映射
             inputNamespaceId: () => {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
@@ -37,9 +37,9 @@ const mccg: MccgTypes.MccgObject = {
             else if (!e.matches && $('#dark-stylesheet').length > 0)
                 $('#dark-stylesheet').remove();
         },
-        darkStyleSheet: document.createElement('link'),
-        matcher: matchMedia('(prefers-color-scheme: dark)'),
-        bindedChangeEvent: false as boolean,
+        darkStyleSheet: document.createElement('link'), // 暗色样式表
+        matcher: matchMedia('(prefers-color-scheme: dark)'), // 媒体匹配器
+        bindedChangeEvent: false as boolean, // 是否绑定了更改事件
     }, {
         set(obj, prop, value) {
             if (prop === 'value') {
@@ -62,11 +62,11 @@ const mccg: MccgTypes.MccgObject = {
             return Reflect.set(...arguments);
         }
     }),
-    temp: {},
-    footer: void 0,
-    homePage: void 0,
-    eCommandPage: document.createElement('body'),
-    cancelHomePageHiddened: false,
+    temp: {}, // 临时存储对象
+    footer: void 0, // 页脚
+    homePage: void 0, // 主页
+    eCommandPage: document.createElement('body'), // 命令页面元素
+    cancelHomePageHiddened: false, // 是否取消主页隐藏
     backToHomePage: function () {
         if (this.showingCmdPage.showing === true) {
             if (document.body.lastChild.nodeName !== 'FOOTER')

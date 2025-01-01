@@ -1,0 +1,1 @@
+node .\node_modules\typescript\open_server\1.mjs

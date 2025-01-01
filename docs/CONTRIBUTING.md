@@ -28,12 +28,13 @@ npm config set registry https://registry.npmmirror.com
 在TS中请尽量加上分号而不是直接换行。
 
 ## 文件结构 <!-- 请在每一行结束加上<br />以实现零行间距 -->
-`docs/` 文档<br />
+`docs/` 文档<br /> 
 `src/` ts及所有需要编译的源代码（不包括声明文件）<br />
 [`src/init.ts`](../src/init.ts) 初始化文件<br />
 [`src/ready.min.ts`](../src/ready.min.ts) 主页面加载完成后执行的代码<br />
 `src/ready.command.*.page.ts` 每个内置命令页面的加载完成后独立执行的代码<br />
 [`ready.command.page.js`](../ready.command.page.js) 每个内置命令页面的加载完成后都会执行的代码<br />
+[`src/datas.ts`](../src/datas.ts) 定义Mc数据<br />
 [`command.page.css`](../command.page.css) 命令页面通用样式<br />
 `command.page.*.css` 每个内置命令页面的独立样式，其中`*`是页面名<br />
 [`mccg.extension.d.ts`](../mccg.extension.d.ts) 未来将会开发的插件系统的声明文件<br />
