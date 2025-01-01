@@ -8,7 +8,7 @@ const port = 3000;
 
 /**
  * @param {http.ServerResponse} res
- * @param {Error & { code: any }} e
+ * @param {object} e
  */
 function reply500(res, e) {
     res.statusCode = 500;
