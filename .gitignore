@@ -1,14 +1,1 @@
-# shit
 node_modules/
-
-# package-lock.json
-# package.json
-
-.vscode/*.json
-!.vscode/tasks.json
-
-# Those files are only useful in the production environment.
-# If you want to get those files, please add me on QQ 1561737625.
-datas.js
-/images/
-/dist/
