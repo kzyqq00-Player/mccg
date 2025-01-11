@@ -13,7 +13,7 @@ declare namespace MccgTypes {
         cmdPage: {
             setblock: {
                 blockStates: ([string, string | number] | [])[];
-                TRElement: HTMLTableRowElement | Node;
+                TRElement: HTMLTableRowElement;
                 onBlockStateInput(e: EventTargetType<HTMLInputElement>): void;
                 selectedBlock: {
                     name: keyof BlockNameIdMap;

@@ -34,7 +34,7 @@ function JSONStringifyWithNonEnumerable(obj) {
 /**
  * @type {Record<string, <TServerResponse extends typeof ServerResponse = typeof ServerResponse>(path: string, searchParams: URLSearchParams, res: TServerResponse) => void>}
  */
-const pathHandlers = {
+const apiHandlers = {
     'block-name-id-map': async (path, searchParams, res) => {
         const name = searchParams.get('name');
         res.setHeader('Content-Type', 'application/json');
@@ -72,6 +72,7 @@ process.on('uncaughtException', e => {
  * @type {http.ServerResponse}
  */
 let globalRes;
+
 const server = http.createServer(async (req, res) => {
     globalRes = res;
     const filepath = req.url.slice(1);
@@ -90,7 +91,7 @@ const server = http.createServer(async (req, res) => {
         const url = new URL(req.url, `http://${hostname}`);
         const path = url.pathname.slice(5);
 
-        const handler = pathHandlers[path];
+        const handler = apiHandlers[path];
         if (handler) {
             handler(path, url.searchParams, res);
             return;

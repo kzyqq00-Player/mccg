@@ -1,4 +1,5 @@
 import $ from 'jquery'
+// @ts-ignore
 window.$ = $;
 
 const mccg: MccgTypes.MccgObject = {
@@ -35,10 +36,11 @@ const mccg: MccgTypes.MccgObject = {
     theme: new Proxy({
         value: localStorage.getItem('theme') as MccgTypes.STheme ?? 'os-default',
         setFromOSDefault: (e: { matches: boolean; }) => {
-            if (e.matches && $('#dark-stylesheet').length === 0)
+            const darkStylesheet = $('#dark-stylesheet');
+            if (e.matches && darkStylesheet.length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
-            else if (!e.matches && $('#dark-stylesheet').length > 0)
-                $('#dark-stylesheet').remove();
+            else if (!e.matches && darkStylesheet.length > 0)
+                darkStylesheet.remove();
         },
         darkStyleSheet: document.createElement('link'),
         matcher: matchMedia('(prefers-color-scheme: dark)'),
@@ -156,6 +158,7 @@ const mccg: MccgTypes.MccgObject = {
     }
 };
 (function(mccg) {
+    // @ts-ignore
     window.mccg = mccg;
     mccg.eCommandPage.classList.add('command-page');
 
@@ -166,7 +169,7 @@ const mccg: MccgTypes.MccgObject = {
     }
     mccg.theme.darkStyleSheet.id = 'dark-stylesheet';
     mccg.theme.darkStyleSheet.rel = 'stylesheet';
-    mccg.theme.darkStyleSheet.href = 'dark.css';
+    mccg.theme.darkStyleSheet.href = 'src/dark.css';
     // @ts-ignore
     mccg.cmdPage.setblock.TRElement.innerHTML = `<td><input type="text" placeholder="键"></td><td><input type="text" placeholder="值"></td>`;
     // @ts-ignore
