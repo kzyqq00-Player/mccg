@@ -106,7 +106,7 @@ const server = http.createServer(async (req, res) => {
         .then(data => {
             const encoding = chardet.detect(data);
 
-            res.setHeader('Content-Type', filepath.endsWith('.ts') ?.getType(filepath).concat(encoding ? '; charset=' + encoding : ''));
+            res.setHeader('Content-Type', mime.getType(filepath).concat(encoding ? '; charset=' + encoding : ''));
             res.setHeader('Cache-Control', 'no-cache');
 
             return data;
