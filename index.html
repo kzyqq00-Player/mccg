@@ -4,24 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>MC指令生成器</title>
-    <link rel="preload" href="styles.min.css" as="style">
-    <link rel="preload" href="jquery-3.7.1.min.js" as="script">
-    <link rel="preload" href="dist/init.js" as="script">
-    <link rel="prefetch" href="dist/ready.min.js" as="script">
+    <link rel="preload" href="src/styles.scss" as="style">
+    <link rel="preload" href="jquery-3.7.1.min.ts" as="script">
+    <link rel="preload" href="src/init.ts" as="script">
+    <link rel="prefetch" href="src/ready.min.ts" as="script">
     <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" href="styles.min.css">
-    <link rel="stylesheet" href="command.page.css">
+    <link rel="stylesheet" href="src/styles.scss">
+    <link rel="stylesheet" href="src/command.page.scss">
     <link rel="lincense" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans">
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="dist/init.js"></script>
-    <script src="dist/ready.min.js" defer></script>
-    <script type="importmap">
-        {
-            "imports": {
-                "datas": "./dist/datas.js"
-            }
-        }
-    </script>
+    <script src="src/init.ts" type="module"></script>
+    <script src="src/ready.min.ts" defer></script>
     <template id="main-page">
         <header>
             <h2>MC指令生成器 <span>By</span> 鬼么什这搁
@@ -56,7 +48,7 @@
         </footer>
     </template>
     <template id="contact-page">
-        <header id="path"><img src="images/back.png" alt="返回">
+        <header class="path"><img src="images/back.png" alt="返回">
             <a>主页</a> > <a>联系孤独的开发者</a>
         </header>
 
@@ -72,7 +64,7 @@
         </main>
     </template>
     <template id="setblock-page">
-        <header id="path"><img src="images/back.png" alt="返回">
+        <header class="path"><img src="images/back.png" alt="返回">
             <a>主页</a> > <a>setblock</a>
         </header>
         
@@ -86,10 +78,12 @@
             <label id="block">
                 <p><span class="required">要放置的方块：</span><br>
                 注意：不加minecraft:前缀会自动加上，当前版本仅支持输入原版方块名</p>
-                <p><input type="text" placeholder="方块名">
-                <button type="button" disabled id="search-in-database">在数据库里查询</button>
-                <button type="button" id="directly-input-namespace-id">直接输入ID</button>
-                <button type="button" id="block-reset" hidden>重置</button></section>
+                <p>
+                    <input type="text" placeholder="方块名">
+                    <button type="button" disabled id="search-in-database">在数据库里查询</button>
+                    <button type="button" id="directly-input-namespace-id">直接输入ID</button>
+                    <button type="button" id="block-reset" hidden>重置</button>
+                </p>
                 <dialog id="not-found-in-database">
                     <p style="margin-bottom: 0">未在数据库中找到该方块，请手动输入ID
                     <br>如果您确实觉得您输入的方块在原版里存在，可以尝试以下方法：</p>

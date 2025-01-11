@@ -9,6 +9,6 @@ node_modules/
 
 # Those files are only useful in the production environment.
 # If you want to get those files, please add me on QQ 1561737625.
-datas.js
+data.js
 /images/
 /dist/

@@ -1,8 +1,11 @@
+import $ from 'jquery'
+window.$ = $;
+
 const mccg: MccgTypes.MccgObject = {
     showingCmdPage: {
-        showing: false, // 是否显示命令页面
-        showingPage: 'home-page', // 当前显示的页面
-        showedPages: new Set() // 已显示的页面集合
+        showing: false,
+        showingPage: 'home-page',
+        showedPages: new Set()
     },
     cmdPage: {
         setblock: {
@@ -10,15 +13,15 @@ const mccg: MccgTypes.MccgObject = {
             TRElement: document.createElement('tr'), // 表格行元素
             onBlockStateInput: (e) => {
                 const cell = e.target.closest('td');
-                const row = cell.closest('tr');
-                const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+                const row = cell!.closest('tr');
+                const rowIndex = Array.from(row!.parentNode!.children).indexOf(row!);
                 const blockStates = mccg.cmdPage.setblock.blockStates;
                 if (!blockStates[rowIndex]) blockStates[rowIndex] = [];
-                blockStates[rowIndex][Array.from(cell.parentNode.children).indexOf(cell)] = e.target.value;
+                blockStates[rowIndex][Array.from(cell!.parentNode!.children).indexOf(cell!)] = e.target.value;
             },
-            selectedBlock: void 0, // 选中的块
-            blockSelectButtonClicked: false, // 块选择按钮是否被点击
-            idBlockMap: void 0, // ID块映射
+            // @ts-expect-error
+            selectedBlock: null,
+            blockSelectButtonClicked: false,
             inputNamespaceId: () => {
                 $('#block-reset')[0].hidden = false;
                 $('#search-in-database')[0].hidden = true;
@@ -31,29 +34,29 @@ const mccg: MccgTypes.MccgObject = {
     },
     theme: new Proxy({
         value: localStorage.getItem('theme') as MccgTypes.STheme ?? 'os-default',
-        setFromOSDefault: (e: { matches: boolean }) => {
+        setFromOSDefault: (e: { matches: boolean; }) => {
             if (e.matches && $('#dark-stylesheet').length === 0)
                 document.head.appendChild(mccg.theme.darkStyleSheet);
             else if (!e.matches && $('#dark-stylesheet').length > 0)
                 $('#dark-stylesheet').remove();
         },
-        darkStyleSheet: document.createElement('link'), // 暗色样式表
-        matcher: matchMedia('(prefers-color-scheme: dark)'), // 媒体匹配器
-        bindedChangeEvent: false as boolean, // 是否绑定了更改事件
+        darkStyleSheet: document.createElement('link'),
+        matcher: matchMedia('(prefers-color-scheme: dark)'),
+        boundChangeEvent: false as boolean,
     }, {
         set(obj, prop, value) {
             if (prop === 'value') {
                 if (value === 'dark') {
                     document.head.appendChild(obj.darkStyleSheet);
-                    obj.bindedChangeEvent = false;
-                    obj.matcher.removeEventListener('change', obj.setFromOSDefault)
+                    obj.boundChangeEvent = false;
+                    obj.matcher.removeEventListener('change', obj.setFromOSDefault);
                 } else if (value === 'light') {
                     $('#dark-stylesheet').remove();
-                    obj.bindedChangeEvent = false;
+                    obj.boundChangeEvent = false;
                     obj.matcher.removeEventListener('change', obj.setFromOSDefault);
                 } else if (value === 'os-default') { // nnd找了那么久的bug原来是大括号没加
-                    if (!obj.bindedChangeEvent) {
-                        obj.bindedChangeEvent = true;
+                    if (!obj.boundChangeEvent) {
+                        obj.boundChangeEvent = true;
                         obj.matcher.addEventListener('change', obj.setFromOSDefault);
                     }
                     obj.setFromOSDefault(obj.matcher);
@@ -62,14 +65,15 @@ const mccg: MccgTypes.MccgObject = {
             return Reflect.set(...arguments);
         }
     }),
-    temp: {}, // 临时存储对象
-    footer: void 0, // 页脚
-    homePage: void 0, // 主页
-    eCommandPage: document.createElement('body'), // 命令页面元素
-    cancelHomePageHiddened: false, // 是否取消主页隐藏
-    backToHomePage: function () {
-        if (this.showingCmdPage.showing === true) {
-            if (document.body.lastChild.nodeName !== 'FOOTER')
+    temp: {},
+    // @ts-expect-error
+    footer: null,
+    // @ts-expect-error
+    homePage: null,
+    eCommandPage: document.createElement('body'),
+    backToHomePage() {
+        if (this.showingCmdPage.showing) {
+            if (document.body.lastChild!.nodeName !== 'FOOTER')
                 this.homePage.appendChild(this.footer);
             document.body = this.homePage;
             $('.command-page-scripts').remove();
@@ -78,13 +82,13 @@ const mccg: MccgTypes.MccgObject = {
             this.showingCmdPage.showingPage = 'home-page';
         }
     },
-    commandPage: function () {
+    commandPage() {
         let templateIdOfWillBeShowedPage: string;
         const setBody = (function (this: typeof mccg, appendStyles: boolean) {
             this.eCommandPage.innerHTML = $(`#${templateIdOfWillBeShowedPage}`).html();
             document.body = this.eCommandPage;
-            
-            if (document.body.lastElementChild.tagName !== 'FOOTER')
+
+            if (document.body.lastElementChild!.tagName !== 'FOOTER')
                 this.eCommandPage.appendChild(this.footer);
             this.showingCmdPage.showingPage = location.hash.slice(2);
 
@@ -102,23 +106,29 @@ const mccg: MccgTypes.MccgObject = {
                 const onlyThisCommandPageScript = document.createElement('script');
                 onlyThisCommandPageScript.id = `ready-command-${this.showingCmdPage.showingPage}-page`;
                 onlyThisCommandPageScript.classList.add('command-page-scripts');
-                onlyThisCommandPageScript.src = `dist/ready.command.${this.showingCmdPage.showingPage}.page.js`;
+                onlyThisCommandPageScript.src = `src/ready.command.${this.showingCmdPage.showingPage}.page.ts`;
 
                 const universalScript = document.createElement('script');
                 universalScript.id = 'ready-command-page';
                 universalScript.classList.add('command-page-scripts');
-                universalScript.src = 'ready.command.page.js';
+                universalScript.src = 'src/ready.command.page.js';
 
                 document.head.appendChild(universalScript);
                 document.head.appendChild(onlyThisCommandPageScript);
             }
-            
+
             this.showingCmdPage.showing = true;
         }).bind(this);
         switch (location.hash) {
-            case '#/setblock': templateIdOfWillBeShowedPage = 'setblock-page'; break;
-            case '#/contact-me': templateIdOfWillBeShowedPage = 'contact-page'; break;
-            default: this.backToHomePage(); return;
+            case '#/setblock':
+                templateIdOfWillBeShowedPage = 'setblock-page';
+                break;
+            case '#/contact-me':
+                templateIdOfWillBeShowedPage = 'contact-page';
+                break;
+            default:
+                this.backToHomePage();
+                return;
         }
         if (!this.showingCmdPage.showedPages.has(templateIdOfWillBeShowedPage))
             this.showingCmdPage.showedPages.add(templateIdOfWillBeShowedPage);
@@ -129,8 +139,8 @@ const mccg: MccgTypes.MccgObject = {
 
         setBody(true);
     },
-    generateErrorReport: (error, description) => {
-        const { name, stack, message } = error;
+    generateErrorReport(error, description) {
+        const {name, stack, message} = error;
         return "Oops, my body's color is red now!\n\n"
             + (description ? `Description:\n// ${description}\n\n` : '')
             + `Error message: "${error}"\n\nError object: ${JSON.stringify({
@@ -142,15 +152,16 @@ const mccg: MccgTypes.MccgObject = {
                 const rand = Math.random();
                 return rand >= 0 && rand <= 0.009 ? "\nDrink a coffee now? Submit to you error report's person is so lazy, he can't read the error report!\n"
                     + "Drink a coffee!" : '';
-            })(); // This just a easter egg don't scold me :)
+            })(); // This just an easter-egg don't scold me :)
     }
 };
 (function(mccg) {
+    window.mccg = mccg;
     mccg.eCommandPage.classList.add('command-page');
 
     if (mccg.theme.value === 'os-default') {
         mccg.theme.setFromOSDefault(mccg.theme.matcher);
-        mccg.theme.bindedChangeEvent = true;
+        mccg.theme.boundChangeEvent = true;
         mccg.theme.matcher.addEventListener('change', mccg.theme.setFromOSDefault);
     }
     mccg.theme.darkStyleSheet.id = 'dark-stylesheet';
@@ -166,12 +177,12 @@ const mccg: MccgTypes.MccgObject = {
             if (mccg.temp.errorReport) {
                 let onSuccess = () => {
                     console.info('复制成功');
-                    onSuccess = () => { };
+                    onSuccess = () => {};
                 };
                 const copy = () => {
-                    navigator.clipboard.writeText(mccg.temp.errorReport).then(onSuccess, () => {
+                    navigator.clipboard.writeText(mccg.temp.errorReport!).then(onSuccess, () => {
                         console.warn('由于技术限制, 请点击一下页面任意位置');
-                        new Promise<void>((resolve) => {
+                        new Promise<void>(resolve => {
                             const id = setInterval(() => {
                                 if (document.hasFocus()) {
                                     clearInterval(id);
