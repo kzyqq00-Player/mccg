@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "target": "ES2017",
+        "paths": {
+            "navigo": ["./node_modules/navigo/index.d.ts"],
+            "index": ["./types/index.d.ts"]
+        },
+        "types": [
+            "./types/index.d.ts"
+        ]
+    }
+}

@@ -1,0 +1,9 @@
+body {
+    background: linear-gradient(to right, purple, white);
+    text-align: center;
+}
+
+* {
+    display: block;
+    margin: 0 auto;
+}

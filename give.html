@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Summon command - /fill</title>
+        <script src="./pages.script/give.js"></script>
+    </head>
+    <body>
+        <!-- 输入框，背景文字为 "ID" -->
+        <input type="text" placeholder="Player/玩家(@a为全部玩家,@r为随机玩家,@s为自己,@e为所有实体,@p为最近的玩家)">
+        
+        <!-- 输入框，背景文字为 "Position/坐标" -->
+        <input type="text" placeholder="ID">
+        <input type="text" placeholder="NBT(可不填)">
+        
+        <!-- 按钮，文字为 "Summon/生成"，点击时调用 McCs.summon() 函数 -->
+        <button onclick="McCs.summon()">Summon/生成</button>
+        <a href="Cs.html">Main</a>
+    </body>
+</html>
