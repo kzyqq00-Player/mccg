@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd01ba2f-da60-499b-b11e-a52e488d7700" name="更改" comment="webstorm真香">
+      <change afterPath="$PROJECT_DIR$/.idea/MCCG.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command.page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ready.command.page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command.page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command.page.setblock.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/command.page.setblock.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dark.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mccg.extension.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/mccg.extension.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ready.command.page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/datas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ready.command.setblock.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ready.command.setblock.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ready.min.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ready.min.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/general.types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/general.types.d.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kzyqq00-Player&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kzyqq00-Player/mccg&quot;,
+    &quot;accountId&quot;: &quot;4eb6b0e8-7650-40cb-a27c-22767246345f&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/server/server.mjs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="HttpClientSelectedEnvironments">
+    <file url="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2rLFmILVtpElYlCtqx0fmYv3N6o" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP 请求.rest-api | #1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/C盘迁移/Documents/编程思密达/vite-project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\C盘迁移\\Documents\\编程思密达\\MCCG\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\C盘迁移\Documents\编程思密达\MCCG\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" executionIdentifier="#1" runType="运行单个请求">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP 请求.rest-api | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="fd01ba2f-da60-499b-b11e-a52e488d7700" name="更改" comment="" />
+      <created>1736330606044</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736330606044</updated>
+      <workItem from="1736330607231" duration="201000" />
+      <workItem from="1736553550765" duration="861000" />
+      <workItem from="1736554435259" duration="217000" />
+      <workItem from="1736554663048" duration="130000" />
+      <workItem from="1736554795887" duration="3719000" />
+      <workItem from="1736560470955" duration="3607000" />
+      <workItem from="1736595968218" duration="484000" />
+      <workItem from="1736596465039" duration="689000" />
+      <workItem from="1736597168528" duration="75000" />
+      <workItem from="1736597245710" duration="15000" />
+    </task>
+    <task id="LOCAL-00001" summary="我才发现我把这仨给忘了">
+      <option name="closed" value="true" />
+      <created>1736554175441</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736554175441</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="我才发现我把这仨给忘了" />
+    <MESSAGE value="webstorm真香" />
+    <option name="LAST_COMMIT_MESSAGE" value="webstorm真香" />
+  </component>
+</project>
