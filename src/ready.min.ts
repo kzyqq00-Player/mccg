@@ -15,15 +15,15 @@ if (location.hash === '') {
 }
 
 $('.left-menu li').on('click', (e) => {
-    const dataset = e.target.dataset;
-    if (!dataset.selected) {
-        dataset.selected = '';
-        dataset.leftMenuSelectedTemp = 'true';
+    const dataet = e.target.dataet;
+    if (!dataet.selected) {
+        dataet.selected = '';
+        dataet.leftMenuSelectedTemp = 'true';
         $('.left-menu li').each((_i, ele) => {
-            if (ele.dataset.leftMenuSelectedTemp !== 'true' && ele.dataset.selected === '')
-                delete ele.dataset.selected
+            if (ele.dataet.leftMenuSelectedTemp !== 'true' && ele.dataet.selected === '')
+                delete ele.dataet.selected
         });
-        delete dataset.leftMenuSelectedTemp;
+        delete dataet.leftMenuSelectedTemp;
     }
 }); // 左侧菜单栏选项选中
 $('#theme-select').on('change', () =>
