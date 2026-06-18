@@ -96,7 +96,7 @@ declare namespace Mccg {
         /**
          * Like the `window`, but we won't developers use `window` storage vars.
          * 
-         * This object can let multiple extensions transfer datas.
+         * This object can let multiple extensions transfer data.
          */
         readonly global: object;
 

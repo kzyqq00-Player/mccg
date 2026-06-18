@@ -1,0 +1,21 @@
+#pos input { width: 10ch }
+
+#block {
+    & img {
+        width: 300px;
+        position: absolute;
+        margin-top: 4px;
+    }
+    & input { width: 14ch }
+}
+
+#block-state-add {
+    position: relative;
+    left: 60px;
+}
+
+#block-state-table {
+    margin-top: 10px;
+
+    & tbody input { width: 14ch }
+}

@@ -10,7 +10,7 @@ $('#search-in-database').on('click', async () => {
     $('#search-in-database')[0].innerHTML = '重新查询';
     const inputValue = ($('#block input') as JQuery<HTMLInputElement>).val();
     let selectedBlock = mccg.cmdPage.setblock.selectedBlock;
-    if (selectedBlock === void 0)
+    if (selectedBlock === null)
         mccg.cmdPage.setblock.selectedBlock = {
             name: '',
             id: '',
@@ -19,41 +19,50 @@ $('#search-in-database').on('click', async () => {
                 value: ''
             }
         };
-    if (!mccg.cmdPage.setblock.idBlockMap) {
-        let res: Awaited<typeof import('datas')>['idBlockMap'];
-        try {
-            res = (await import('datas')).idBlockMap;
-        } catch (e) {
-            console.group('失败原因');
-            console.error(e);
-            console.log('错误对象: ');
-            console.dir(e);
-            console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
-            console.groupEnd();
-            alert('数据库加载失败, 打开控制台查看详情');
-            mccg.temp.errorReport = mccg.generateErrorReport(e, 'Failed to load file (maybe because the network exception): datas.js')
-            return;
-        }
-        mccg.cmdPage.setblock.idBlockMap = res;
+
+    let found = true;
+    let result: string;
+
+    try {
+        result = (await fetch(`/api/block-name-id-map?name=${inputValue}`).then(resp => {
+            if (resp.status === 404) {
+                found = false;
+            } else if (resp.status !== 200) {
+                throw new Error(`Failed to fetch api: block-name-id-map, status code: ${resp.status}`);
+            } else {
+                return resp.json();
+            }
+        }))?.id;
+    } catch (e) {
+        console.group('失败原因');
+        console.error(e);
+        console.log('错误对象: ');
+        console.dir(e);
+        console.log('在控制台输入"copyError"并回车以复制错误报告寻求他人帮助而不是发送截图')
+        console.groupEnd();
+        alert('api请求失败，请查看控制台以获取更多信息');
+        mccg.temp.errorReport = mccg.generateErrorReport(e, 'Failed to fetch api (maybe because the network exception): block-name-id-map');
+        return;
     }
-    const idBlockMap = mccg.cmdPage.setblock.idBlockMap;
+
+    if (!found) {
+        ($('#not-found-in-database')[0] as HTMLDialogElement).showModal();
+        return;
+    }
     selectedBlock = mccg.cmdPage.setblock.selectedBlock;
     $('#block-reset')[0].hidden = false;
-    if (Object.values(idBlockMap).includes(inputValue)) {
-        selectedBlock.name = inputValue;
-        selectedBlock.id = idBlockMap[($('#block input') as JQuery<HTMLInputElement>).val()];
-        
-        if (inputValue === selectedBlock.easterEgg.value) {
-            selectedBlock.easterEgg.times++;
-            if (selectedBlock.easterEgg.times >= 3) {
-                alert('你按你妹呢');
-                selectedBlock.easterEgg.times = 0;
-                return;
-            }
+    selectedBlock.name = inputValue;
+    selectedBlock.id = result;
+
+    if (inputValue === selectedBlock.easterEgg.value) {
+        selectedBlock.easterEgg.times++;
+        if (selectedBlock.easterEgg.times >= 3) {
+            alert('你按你妹呢');
+            selectedBlock.easterEgg.times = 0;
+            return;
         }
-        alert('成功');
-    } else
-        ($('#not-found-in-database')[0] as HTMLDialogElement).showModal();
+    }
+    alert('成功');
     selectedBlock.easterEgg.value = inputValue;
 });
 $('#not-found-in-database-input-id').on('click', () => {
